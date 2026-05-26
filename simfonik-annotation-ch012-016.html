@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMFONIK Script Annotation — Chapters 012–016</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-light: #7a7a74;
+    --ink-faint: #b0b0a8;
+    --surface: #fafaf8;
+    --surface-raised: #ffffff;
+    --border: #e0e0d8;
+    --border-strong: #c8c8c0;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--surface);
+  }
+
+  .page-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem 5rem;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .doc-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .doc-header .subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .doc-header .intro {
+    font-size: 14px;
+    color: var(--ink-mid);
+    max-width: 700px;
+    line-height: 1.65;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    color: var(--ink-mid);
+    font-family: 'Courier New', monospace;
+  }
+  .legend-swatch {
+    width: 11px; height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── Section heading ── */
+  .section-heading {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-light);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Chapter block ── */
+  .chapter {
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: var(--surface-raised);
+  }
+  .ch-header {
+    background: #f4f4f0;
+    border-bottom: 1px solid var(--border-strong);
+    padding: 0.65rem 1.25rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .ch-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .ch-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  /* ── Layer banner ── */
+  .layer-banner {
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 0.28rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+  .layer-shared { background: #EAF3DE; color: #3B6D11; }
+  .layer-split  { background: #E6F1FB; color: #185FA5; }
+  .layer-sup    { background: #F1EFE8; color: #5F5E5A; }
+  .layer-qim    { background: #FAEEDA; color: #633806; }
+
+  /* ── Beat ── */
+  .beat {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .beat:last-child { border-bottom: none; }
+  .beat-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-bottom: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Stream layout: script full width, tags beneath ── */
+  .stream {
+    background: #f7f7f4;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .stream-sup {
+    background: #f4f4f0;
+    border-left: 3px solid var(--border-strong);
+  }
+  .stream-qim {
+    background: #fffbf2;
+    border-left: 3px solid #BA7517;
+  }
+  .stream-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .stream-text {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ── Split: two streams side by side ── */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+  .split-grid .stream { margin-bottom: 0; }
+
+  /* ── Tags ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 0.45rem;
+  }
+  .tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 700;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+  .tag-mode   { background: #EEEDFE; color: #3C3489; }
+  .tag-inject { background: #E1F5EE; color: #0F6E56; }
+  .tag-timing { background: #FAEEDA; color: #633806; }
+  .tag-impact { background: #FAECE7; color: #712B13; }
+  .tag-note   { background: #F1EFE8; color: #444441; font-weight: 400; font-style: italic; font-size: 10px; }
+
+  /* Tags split: two columns under a split-grid */
+  .tags-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 0.65rem;
+  }
+  .tags-split .tags { margin-top: 0.35rem; }
+  .tags-split .stream-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── Insight box ── */
+  .insight {
+    background: #f0faf5;
+    border-left: 3px solid #1D9E75;
+    border-radius: 0 5px 5px 0;
+    padding: 0.6rem 1rem;
+    margin-top: 0.6rem;
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    font-family: 'Georgia', serif;
+  }
+  .insight strong { color: var(--ink); }
+
+  /* ── Summary box ── */
+  .summary-box {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .summary-box p {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .summary-box p:last-child { margin-bottom: 0; }
+  .summary-box strong { color: var(--ink); }
+
+  .footer {
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px;
+    color: var(--ink-faint);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  @media print {
+    body { background: white; }
+    .page-wrap { padding: 2rem; }
+    .chapter { break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    .split-grid { grid-template-columns: 1fr; }
+    .tags-split { grid-template-columns: 1fr; }
+    .page-wrap { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-header">
+    <h1>SIMFONIK Script Annotation — Chapters 012–016</h1>
+    <div class="subtitle">Healthcare Professional Part 1 · Fake-listening / Full-body listening diptych · Compiled May 2026</div>
+    <p class="intro">A working annotation of five consecutive chapters from the HP Master Translation Script, mapping each beat to the inject catalogue (v4). Demonstrates the layered, simultaneous-paired architecture of the fake-listening → full-body listening arc (composite pattern 10.12), and shows how inject types, mode tags, timing patterns and relational impacts are distributed across the four audio streams.</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#7F77DD"></span>Mode tag</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#1D9E75"></span>Inject type (catalogue ref)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#BA7517"></span>Timing pattern</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#D85A30"></span>Relational impact</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#888780"></span>Note / observation</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#3B6D11"></span>Shared audio (both players)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#185FA5"></span>Split audio (A / B differ)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#5F5E5A"></span>Supervisor stream only</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#BA7517"></span>Inner monologue layer (QIM)</div>
+  </div>
+
+
+  <!-- ══ 012 ══ -->
+  <div class="section-heading">Chapter 012 — check in 4</div>
+  <div class="chapter">
+    <div class="ch-header">
+      <span class="ch-title">Check in 4</span>
+      <span class="ch-ref">012_01_STU / 012_01_SUP</span>
+    </div>
+    <div class="layer-banner layer-shared">Shared audio — both players hear identical content</div>
+
+    <div class="beat">
+      <div class="beat-ref">012_01_STU → participant</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"Ok. Check in. You know what to do now. Clap hard and rub your hands together. Rub your arms up and down shoulder to wrist — wrist to shoulder. And now rub your legs equally as vigorously reminding yourself that you are here and present. Let's have a little stretch out — just reaching out and up to the sky — like you are yawning with your whole body. Now stand up and swap seats with your partner. Sit back down in your partner's chair."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">B3 somatic grounding</span>
+        <span class="tag tag-inject">B5 body wake-up</span>
+        <span class="tag tag-inject">C1 seating / spatial setup</span>
+        <span class="tag tag-mode">ACT</span>
+        <span class="tag tag-timing">linear, sequential</span>
+        <span class="tag tag-impact">regulates → re-orients → frames</span>
+      </div>
+      <div class="insight">Three inject types in one beat, in strict order: settle the body (B3), activate it (B5), then reposition it spatially (C1). The seat-swap is doing relational work — resetting the physical and psychological frame before the emotionally demanding chapter that follows. "You know what to do now" signals this is the fourth repetition of the check-in structure; the phrase itself is a regulation tool.</div>
+    </div>
+
+    <div class="beat">
+      <div class="beat-ref">012_01_SUP → supervisor only</div>
+      <div class="stream stream-sup">
+        <div class="stream-label">Supervisor narration (third-person, present tense)</div>
+        <div class="stream-text">"As the participants swap seats you can stand up and have a little wiggle around and shake out any stiffness before sitting back down."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-note">Supervisor invited to co-regulate alongside participants — not merely observe. Their body settling signals safety to the room.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 013 ══ -->
+  <div class="section-heading">Chapter 013 — full body listening and fake listening</div>
+  <div class="chapter">
+    <div class="ch-header">
+      <span class="ch-title">Full body listening and fake listening</span>
+      <span class="ch-ref">013_01 → 013_QIM</span>
+    </div>
+
+    <div class="layer-banner layer-shared">013_01_STU — shared audio, both players</div>
+    <div class="beat">
+      <div class="beat-ref">013_01_STU → theory framing</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"A key part of empathy is listening. Sometimes we think we are listening but actually we are fooling ourselves and others all the time. It's easy to fake listen. To be listened to is a striking experience partly because it is so rare… Fake listening is where our awareness is primarily on ourselves and our self-talk: our own thoughts, feelings, judgments and conclusions. We can appear to be listening and even make encouraging noises — but our internal dialogue is quite different. When we seek to engage and empathise with a patient we need to move beyond our own thoughts and needs. Let's try some fake listening."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">G23 shared-theory</span>
+        <span class="tag tag-inject">A2 professional identity framing</span>
+        <span class="tag tag-mode">REFLECT</span>
+        <span class="tag tag-timing">linear</span>
+        <span class="tag tag-impact">frames → discomforts</span>
+      </div>
+      <div class="insight">The closing line — "Let's try some fake listening" — functions as a miniature G16 scenario handover. The theory inject announces the pedagogical trap before it is set. This is deliberately transparent: participants know they are about to fake-listen, which makes the felt experience more analytically available in debrief.</div>
+    </div>
+
+    <div class="layer-banner layer-sup">013_02_SUP — supervisor only</div>
+    <div class="beat">
+      <div class="beat-ref">013_02_SUP → advance briefing, one beat ahead</div>
+      <div class="stream stream-sup">
+        <div class="stream-label">Supervisor narration</div>
+        <div class="stream-text">"In a moment the participants will start talking about their opinion on the role of listening in their profession; but as one of them speaks the other will be hearing a constant inner monologue. They will have to split their attention between what is going on in their internal world and what is happening with the person in front of them."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-note">Supervisor briefed one full beat before participants act — so they know where to look before the split-attention begins.</span>
+      </div>
+    </div>
+
+    <div class="layer-banner layer-split">013_03 — split audio: A and B hear entirely different instructions simultaneously</div>
+    <div class="beat">
+      <div class="beat-ref">013_03_STU_A / 013_03_STU_B → simultaneous-paired</div>
+      <div class="split-grid">
+        <div class="stream">
+          <div class="stream-label">Player A hears</div>
+          <div class="stream-text">"In a moment your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue (which we will provide). Do not interrupt your partner but instead try to convince them that you are listening. Ending in 5…4…3…2…1"</div>
+        </div>
+        <div class="stream">
+          <div class="stream-label">Player B hears</div>
+          <div class="stream-text">"When prompted start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"</div>
+        </div>
+      </div>
+      <div class="tags-split">
+        <div>
+          <div class="stream-label">A — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">E7 fake-listening</span>
+            <span class="tag tag-mode">ACT</span>
+            <span class="tag tag-timing">layered — D6 runs underneath</span>
+            <span class="tag tag-impact">demonstrates, creates dissonance</span>
+          </div>
+        </div>
+        <div>
+          <div class="stream-label">B — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">G7 own-words speech</span>
+            <span class="tag tag-inject">G24 cue / signal (GO)</span>
+            <span class="tag tag-mode">SPEAK</span>
+            <span class="tag tag-timing">linear → timed</span>
+            <span class="tag tag-impact">amplifies voice</span>
+          </div>
+        </div>
+      </div>
+      <div class="insight"><strong>This is the key structural moment.</strong> A receives E7 (fake-listening) while B receives G7 (own-words speech) — two entirely different instructions at the same beat. Neither player knows what the other is hearing. B speaks in good faith; A performs listening while their attention is split. The asymmetry is the pedagogy.</div>
+    </div>
+
+    <div class="layer-banner layer-qim">013_QIM — inner monologue layer (D6, continuous, layered under A's stream during 013_03 and 013_04)</div>
+    <div class="beat">
+      <div class="beat-ref">013_QIM → D6 internal distraction — separate audio file, not in linear beat sequence</div>
+      <div class="stream stream-qim">
+        <div class="stream-label">Inner monologue script (Player A only — runs continuously as B speaks)</div>
+        <div class="stream-text">"How much longer do I have to listen to this? I wonder if I can get someone else to take over? Did I turn my phone off? How shall I respond to that email? Does Amazon deliver to the hospital? The vegetables in my fridge… they still ok to eat? Have I got to make an appointment or will they call me? Did I call back like I said I would? Why did I go to bed so late last night? Have I had enough water today? I think I need a holiday. I wonder if I can go home early today? Have I filled out all the right forms? What shall I do this weekend? How many shifts am I on this week? I wonder if my manager got my email. Did I confirm that appointment? Do I need to check how much tax I'm paying? What time do I start tomorrow? Did I take the laundry out of the dryer? What time does the post office close?"</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">D6 internal distraction</span>
+        <span class="tag tag-mode">REFLECT (layered)</span>
+        <span class="tag tag-timing">layered — continuous, plays beneath E7 throughout 013_03 and 013_04</span>
+        <span class="tag tag-impact">splits attention, creates dissonance, demonstrates</span>
+        <span class="tag tag-note">Only inject in the catalogue designed to install a bad habit deliberately — reverse-pedagogy</span>
+        <span class="tag tag-note">Mundanity is intentional: real workplace thoughts, not exaggerated caricature</span>
+      </div>
+      <div class="insight">The QIM sits entirely outside the linear beat sequence — it is a separate audio file running in A's earpiece while B speaks. This is the catalogue's "layered" timing pattern made literal. Without tagging it as D6 with continuous layered timing, any generative system would treat it as optional flavour text and miss that it is the entire mechanism of the exercise.</div>
+    </div>
+
+    <div class="layer-banner layer-split">013_04 — role inversion: A now speaks, B now fake-listens with D6</div>
+    <div class="beat">
+      <div class="beat-ref">013_04_STU_A / 013_04_STU_B → simultaneous-paired, roles inverted</div>
+      <div class="split-grid">
+        <div class="stream">
+          <div class="stream-label">Player A hears</div>
+          <div class="stream-text">"Now you can respond to your partner and start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"</div>
+        </div>
+        <div class="stream">
+          <div class="stream-label">Player B hears</div>
+          <div class="stream-text">"Now your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue which we will provide. Do not interrupt your partner but instead try to convince them that you are really listening."</div>
+        </div>
+      </div>
+      <div class="tags-split">
+        <div>
+          <div class="stream-label">A — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">G7 own-words speech</span>
+            <span class="tag tag-mode">SPEAK</span>
+            <span class="tag tag-timing">timed</span>
+          </div>
+        </div>
+        <div>
+          <div class="stream-label">B — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">E7 fake-listening</span>
+            <span class="tag tag-mode">ACT</span>
+            <span class="tag tag-timing">layered — D6 again</span>
+            <span class="tag tag-impact">demonstrates, creates dissonance</span>
+          </div>
+        </div>
+      </div>
+      <div class="tags" style="margin-top:0.6rem">
+        <span class="tag tag-inject">G22 swap-role</span>
+        <span class="tag tag-note">Both players experience both sides of the fake-listening trap before debrief — the pedagogy requires the double exposure</span>
+      </div>
+    </div>
+
+    <div class="layer-banner layer-shared">013_05_STU — shared debrief</div>
+    <div class="beat">
+      <div class="beat-ref">013_05_STU → structured debrief with timed countdown</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"Debrief. Discuss with your partner how you found having that split attention? Did you zone out completely? Were you struggling to keep connection? Take a few minutes to talk to your partner and discuss the experience. Two minutes starting now. Go! Bring your discussion to a close. Your debrief is ending in 5…4…3…2…1"</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">G26 discussion / countdown-closure</span>
+        <span class="tag tag-mode">SPEAK + PRESSURE</span>
+        <span class="tag tag-timing">timed — open → closure countdown</span>
+        <span class="tag tag-impact">amplifies voice, frames closure</span>
+        <span class="tag tag-note">Questions target the felt experience of split attention, not abstract theory about listening</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 014 ══ -->
+  <div class="section-heading">Chapter 014 — real listening (the counter-definition)</div>
+  <div class="chapter">
+    <div class="ch-header">
+      <span class="ch-title">Real listening</span>
+      <span class="ch-ref">014_01_STU / 014_01_SUP</span>
+    </div>
+    <div class="layer-banner layer-shared">Shared audio, both players</div>
+
+    <div class="beat">
+      <div class="beat-ref">014_01_STU → theory counter-inject</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"Real listening, also known as full body listening, is listening without our own thoughts or personal agenda intruding. We notice what the other person says and how they say it — also picking up on what is unsaid. It includes non-verbal cues: leaning forward and making eye contact, for example. In full body listening all of our awareness is intently on the other person: their words, tone of voice, pauses, facial expressions, posture, emotions, energy and rhythm. We notice what lights them up and what deflates them. Our focus is so fixed on them that our own mental chatter vanishes and we speak with spontaneity. We also notice how our responses impact the other person."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">G23 shared-theory</span>
+        <span class="tag tag-inject">E6 full-body listening (definition)</span>
+        <span class="tag tag-mode">REFLECT</span>
+        <span class="tag tag-timing">linear</span>
+        <span class="tag tag-impact">frames, shifts perspective</span>
+      </div>
+      <div class="insight">This chapter exists entirely to install the counter-vocabulary while the fake-listening experience (Chapter 013) is still physically present in the body. By naming full-body listening now — before asking anyone to practise it — the script ensures participants have a target concept when they enter Chapter 016. This is catalogue composite pattern 10.12 (the diptych): the wrong version is experienced first so the right version has something to contrast against.</div>
+    </div>
+  </div>
+
+
+  <!-- ══ 015 ══ -->
+  <div class="section-heading">Chapter 015 — check in 5 (regulation between chapters)</div>
+  <div class="chapter">
+    <div class="ch-header">
+      <span class="ch-title">Check in 5</span>
+      <span class="ch-ref">015_01_STU / 015_01_SUP</span>
+    </div>
+    <div class="layer-banner layer-shared">Shared audio</div>
+
+    <div class="beat">
+      <div class="beat-ref">015_01_STU</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"It's been a lot — let's do a check in. Feel your hands by rubbing them together. Rub your arms vigorously. Shrug your shoulders up and down a couple of times. Feel your feet fully on the floor and wiggle your toes. And now push down through your sit bones and lengthen your spine towards the ceiling. Lift your arms up to the sky and do a big stretch. Place your hands firmly back on your legs and feel that you are still here and you are still solid."</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">B3 somatic grounding</span>
+        <span class="tag tag-inject">B5 body wake-up</span>
+        <span class="tag tag-mode">ACT</span>
+        <span class="tag tag-timing">linear</span>
+        <span class="tag tag-impact">regulates → re-orients</span>
+        <span class="tag tag-note">"It's been a lot" — candid acknowledgement of cumulative emotional load. 5th of 6 check-ins in Part 1; repetition is cumulative regulation, not redundancy.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 016 ══ -->
+  <div class="section-heading">Chapter 016 — practice good listening (the destination)</div>
+  <div class="chapter">
+    <div class="ch-header">
+      <span class="ch-title">Practice good listening</span>
+      <span class="ch-ref">016_01 → 016_05</span>
+    </div>
+
+    <div class="layer-banner layer-split">016_01 — split audio: A listens with whole body, B recalls a time of not being heard</div>
+    <div class="beat">
+      <div class="beat-ref">016_01_STU_A / 016_01_STU_B → simultaneous-paired</div>
+      <div class="split-grid">
+        <div class="stream">
+          <div class="stream-label">Player A hears</div>
+          <div class="stream-text">"I want you to imagine your whole body is an ear and you are going to listen with your whole body. Remember you cannot be doing anything else if you are truly listening to someone. Notice the change in the way you are listening and be sure to focus on everything they say. Afterwards you will need to repeat it back to them. Ask your partner to tell you about a time where they were not listened to. Go 5, 4, 3, 2, 1"</div>
+        </div>
+        <div class="stream">
+          <div class="stream-label">Player B hears</div>
+          <div class="stream-text">"Think about a time in your life when you felt you were not being heard, where you were not being listened to. When asked, tell your partner about this time in your life. Try to talk about as many details that you can remember. Try to recall who was involved and what the power dynamics were in the situation and the consequences for you. But most importantly try to remember how it made you feel, and explain this to your partner. Keep talking until you hear the signal to stop. Bring your sentence to an end. 5, 4, 3, 2, 1"</div>
+        </div>
+      </div>
+      <div class="tags-split">
+        <div>
+          <div class="stream-label">A — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">E6 full-body listening</span>
+            <span class="tag tag-inject">E8 repeat-back (pre-brief)</span>
+            <span class="tag tag-inject">G8 ask-a-question</span>
+            <span class="tag tag-inject">G24 cue / signal</span>
+            <span class="tag tag-mode">ATTEND</span>
+            <span class="tag tag-impact">shifts perspective, amplifies voice</span>
+          </div>
+        </div>
+        <div>
+          <div class="stream-label">B — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">D3 pain recall</span>
+            <span class="tag tag-inject">G7 own-words speech</span>
+            <span class="tag tag-inject">G18 one-minute warning (implied)</span>
+            <span class="tag tag-mode">REFLECT → SPEAK</span>
+            <span class="tag tag-impact">discomforts, amplifies voice</span>
+          </div>
+        </div>
+      </div>
+      <div class="insight"><strong>The structural mirror of 013_03 — inverted.</strong> In Chapter 013, A received E7 (fake-listening) while B received G7 (speak freely). Here, A receives E6 (full-body listening) while B receives D3 (pain recall). The structural slot is identical; the inject content is the opposite. This is the diptych completing.</div>
+    </div>
+
+    <div class="layer-banner layer-split">016_02 — repeat-back and observation</div>
+    <div class="beat">
+      <div class="beat-ref">016_02_STU_A / 016_02_STU_B → staggered-paired</div>
+      <div class="split-grid">
+        <div class="stream">
+          <div class="stream-label">Player A hears</div>
+          <div class="stream-text">"Now you are going to repeat as much as you remember back to your partner. Start your sentence with the phrase 'what I heard you say was…' and then repeat back to them everything you heard them say. Ready? 'What I heard you say was…'. Bring your sentence to an end. 5, 4, 3, 2, 1"</div>
+        </div>
+        <div class="stream">
+          <div class="stream-label">Player B hears</div>
+          <div class="stream-text">"And now listen to your partner repeat what they heard you say. Your partner will repeat what they heard back to you. And you'll notice the level of detail they managed to capture. Observe how much their attentiveness allowed you to have space to be heard. 5, 4, 3, 2, 1"</div>
+        </div>
+      </div>
+      <div class="tags-split">
+        <div>
+          <div class="stream-label">A — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">E8 repeat-back</span>
+            <span class="tag tag-inject">G6 exact-line-to-repeat</span>
+            <span class="tag tag-mode">SPEAK</span>
+            <span class="tag tag-impact">validates, amplifies voice</span>
+          </div>
+        </div>
+        <div>
+          <div class="stream-label">B — tags</div>
+          <div class="tags">
+            <span class="tag tag-inject">G10 observe-and-wait</span>
+            <span class="tag tag-inject">E9 observational</span>
+            <span class="tag tag-mode">ATTEND / PAUSE</span>
+            <span class="tag tag-impact">shifts perspective</span>
+          </div>
+        </div>
+      </div>
+      <div class="insight">The exact-line-to-repeat ("what I heard you say was…") does double work: scaffolds A past the awkwardness of starting, and installs a phrase that may become a transferable clinical tool. G6 is deployed in service of E8.</div>
+    </div>
+
+    <div class="layer-banner layer-split">016_03 / 016_04 — role swap: B now speaks, A now listens</div>
+    <div class="beat">
+      <div class="beat-ref">016_03 / 016_04 → G22 swap-role — exact structural mirror of 016_01 / 016_02</div>
+      <div class="tags">
+        <span class="tag tag-inject">G22 swap-role</span>
+        <span class="tag tag-note">Inject sequence identical: D3 pain recall (now B→A direction) + E6 full-body listening + E8 repeat-back + G10 observe-and-wait</span>
+        <span class="tag tag-note">Both players experience being listened to at full-body quality before the debrief. Neither only receives, neither only gives.</span>
+      </div>
+    </div>
+
+    <div class="layer-banner layer-shared">016_05_STU — final debrief</div>
+    <div class="beat">
+      <div class="beat-ref">016_05_STU</div>
+      <div class="stream">
+        <div class="stream-label">Script</div>
+        <div class="stream-text">"Debrief. Take a few moments to discuss the experience of practising active listening. How did you find it helped you connect to one another? Were you able to focus on each other? Did you remember the important elements? 2 minutes starting now. Go! Bring your discussion to a close. Your Debrief is ending in 5-4-3-2-1"</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-inject">G26 discussion / countdown-closure</span>
+        <span class="tag tag-mode">SPEAK + PRESSURE</span>
+        <span class="tag tag-timing">timed — open → closure countdown</span>
+        <span class="tag tag-impact">amplifies voice, frames closure</span>
+        <span class="tag tag-note">Questions implicitly compare to the fake-listening experience in Chapter 013. The contrast is the debrief engine — it does not need to be stated.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ SUMMARY ══ -->
+  <div class="section-heading">Structural summary — what the annotation reveals</div>
+  <div class="summary-box">
+    <p><strong>Chapters 013 and 016 are structurally identical.</strong> The same slot sequence — simultaneous-paired → role swap → timed debrief — appears in both chapters. The only change is which inject fills each slot. E7 fake-listening becomes E6 full-body listening. D6 internal distraction becomes D3 pain recall. The QIM layer disappears. This is catalogue composite pattern 10.12 made legible: the wrong version is experienced first so the right version has something to land against.</p>
+    <p><strong>The QIM is invisible without annotation.</strong> In the script it appears as a footnote section (013_QIM). The annotation reveals it as a separate audio layer running continuously under beats 013_03 and 013_04 — which is the entire point of the exercise. Without tagging it as D6 with layered, continuous timing, any generative system would treat it as optional flavour text.</p>
+    <p><strong>The check-ins are cumulative, not repetitive.</strong> Chapters 012 and 015 each deploy B3 + B5. The fifth check-in opens with "It's been a lot" — an acknowledgement of load that the earlier check-ins do not carry. Repeated structure with escalating emotional weight is itself a pattern an AI needs to understand.</p>
+    <p><strong>Inject count across five chapters:</strong> approximately 22 distinct inject instances, covering 15 catalogue types (B3, B5, C1, D3, D6, E6, E7, E8, E9, G6, G7, G8, G10, G22, G23, G24, G26), 4 timing patterns (linear, layered, timed, simultaneous-paired / staggered-paired), and all 6 mode tags (ACT, SPEAK, REFLECT, ATTEND, PRESSURE, PAUSE).</p>
+  </div>
+
+  <div class="footer">SIMFONIK / SIM MAKER · Script annotation v1 · Chapters 012–016 HP Part 1 · May 2026</div>
+
+</div>
+</body>
+</html>

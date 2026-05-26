@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMFONIK — Script Structure</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1a1a18;
+  background: #fafaf8;
+}
+
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+
+.doc-header {
+  border-bottom: 2px solid #1a1a18;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+.doc-header h1 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.doc-header .subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #7a7a74;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 2rem;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #4a4a46;
+  font-family: 'Courier New', monospace;
+}
+.leg-swatch {
+  width: 14px; height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── Part header ── */
+.part-header {
+  background: #f4f4f0;
+  border: 1px solid #c8c8c0;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.part-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a1a18;
+}
+.part-sub {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #888780;
+}
+
+/* ── Chapter track ── */
+.track-wrap {
+  padding-left: 130px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.track { display: flex; flex-direction: column; }
+
+.ch {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid #e8e8e0;
+}
+.ch:first-child { border-top: 0.5px solid #e8e8e0; }
+
+.ch-num {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #b0b0a8;
+  width: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 6px;
+}
+
+.ch-bar-wrap {
+  flex: 1;
+  padding: 4px 0;
+}
+
+.ch-bar {
+  height: 30px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 11px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #4a4a46;
+  background: #f4f4f0;
+  border: 0.5px solid #ddddd5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Georgia', serif;
+}
+
+.ch-bar.annotated {
+  background: #EEEDFE;
+  border-color: #AFA9EC;
+  color: #3C3489;
+  font-weight: 700;
+}
+
+.ch-bar.check-in {
+  background: #fafaf8;
+  border-color: #ddddd5;
+  color: #888780;
+  font-style: italic;
+}
+
+.ch-bar.annotated.check-in {
+  background: #EEEDFE;
+  border-color: #AFA9EC;
+  color: #3C3489;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.ch-type {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  width: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: #b0b0a8;
+  padding-left: 10px;
+}
+
+.ch-type.annotated {
+  color: #534AB7;
+  font-weight: 700;
+}
+
+/* ── Bracket group ── */
+.bracket-group {
+  position: relative;
+}
+
+.bracket-line {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #7F77DD;
+  border-radius: 2px;
+}
+
+.bracket-label {
+  position: absolute;
+  left: -124px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #534AB7;
+  text-align: right;
+  width: 98px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+}
+
+/* ── Stats row ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: #f4f4f0;
+  border: 0.5px solid #ddddd5;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+.stat-card .num {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a18;
+  line-height: 1;
+  margin-bottom: 4px;
+  font-family: 'Georgia', serif;
+}
+.stat-card .lbl {
+  font-size: 11px;
+  color: #7a7a74;
+  font-family: 'Courier New', monospace;
+  line-height: 1.4;
+}
+.stat-card.hi .num { color: #534AB7; }
+
+/* ── Part spacer ── */
+.part-spacer { height: 1.75rem; }
+
+/* ── Note ── */
+.context-note {
+  background: #f0faf5;
+  border-left: 3px solid #1D9E75;
+  border-radius: 0 5px 5px 0;
+  padding: 0.65rem 1rem;
+  margin-top: 2rem;
+  font-size: 13px;
+  color: #4a4a46;
+  line-height: 1.65;
+  font-family: 'Georgia', serif;
+}
+.context-note strong { color: #1a1a18; }
+
+.footer {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #b0b0a8;
+  padding-top: 1.5rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid #e0e0d8;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .track-wrap { padding-left: 90px; }
+  .bracket-label { left: -88px; width: 64px; font-size: 8.5px; }
+  .ch-type { display: none; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .page-wrap { padding: 1.5rem 1rem 3rem; }
+}
+
+@media print {
+  body { background: white; }
+  .page-wrap { padding: 2rem; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-header">
+    <h1>SIMFONIK — script structure and annotation context</h1>
+    <div class="subtitle">Healthcare Professional Parts 1 &amp; 2 · 33 chapters total · Annotation: chapters 012–016, Part 1</div>
+  </div>
+
+  <div class="legend">
+    <div class="leg"><span class="leg-swatch" style="background:#EEEDFE;border:1px solid #AFA9EC"></span>Annotated (012–016)</div>
+    <div class="leg"><span class="leg-swatch" style="background:#f4f4f0;border:0.5px solid #ddddd5"></span>Other content chapter</div>
+    <div class="leg"><span class="leg-swatch" style="background:#fafaf8;border:0.5px solid #ddddd5;opacity:0.7"></span>Regulation / check-in</div>
+  </div>
+
+
+  <!-- ══ PART 1 ══ -->
+  <div class="part-header">
+    <span class="part-name">Part 1 — Empathy foundations</span>
+    <span class="part-sub">017 chapters</span>
+  </div>
+
+  <div class="track-wrap">
+    <div class="track">
+
+      <div class="ch">
+        <div class="ch-num">001</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Intro to project</div></div>
+        <div class="ch-type">orientation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">002</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Intro to empathy</div></div>
+        <div class="ch-type">theory + debrief</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">003</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Safety check</div></div>
+        <div class="ch-type">safety + observation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">004</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 1</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">005</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Pain recall</div></div>
+        <div class="ch-type">reflective</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">006</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Imagine their pain</div></div>
+        <div class="ch-type">empathy exercise</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">007</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 2</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">008</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Kind eyes — eye contact</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">009</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Perfect level of empathy</div></div>
+        <div class="ch-type">reflective</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">010</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 3</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">011</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Hard face — soft face</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <!-- ── Annotated section ── -->
+      <div class="bracket-group">
+        <div class="bracket-line"></div>
+        <div class="bracket-label">annotated<br>section</div>
+
+        <div class="ch">
+          <div class="ch-num">012</div>
+          <div class="ch-bar-wrap"><div class="ch-bar annotated check-in">Check in 4</div></div>
+          <div class="ch-type annotated">regulation</div>
+        </div>
+
+        <div class="ch">
+          <div class="ch-num">013</div>
+          <div class="ch-bar-wrap"><div class="ch-bar annotated">Full body listening and fake listening</div></div>
+          <div class="ch-type annotated">contrast exercise</div>
+        </div>
+
+        <div class="ch">
+          <div class="ch-num">014</div>
+          <div class="ch-bar-wrap"><div class="ch-bar annotated">Real listening</div></div>
+          <div class="ch-type annotated">theory</div>
+        </div>
+
+        <div class="ch">
+          <div class="ch-num">015</div>
+          <div class="ch-bar-wrap"><div class="ch-bar annotated check-in">Check in 5</div></div>
+          <div class="ch-type annotated">regulation</div>
+        </div>
+
+        <div class="ch">
+          <div class="ch-num">016</div>
+          <div class="ch-bar-wrap"><div class="ch-bar annotated">Practice good listening</div></div>
+          <div class="ch-type annotated">embodied practice</div>
+        </div>
+
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">017</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 6</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ PART 2 ══ -->
+  <div class="part-header">
+    <span class="part-name">Part 2 — Kinesthetic empathy and roleplay</span>
+    <span class="part-sub">016 chapters</span>
+  </div>
+
+  <div class="track-wrap">
+    <div class="track">
+
+      <div class="ch">
+        <div class="ch-num">001</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Welcome back</div></div>
+        <div class="ch-type">orientation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">002</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 1</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">003</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Kinesthetic empathy — mirroring breath</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">004</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Kinesthetic empathy — mirroring action</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">005</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Kinesthetic empathy — mirroring posture</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">006</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 2</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">007</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Meet and match in vocal prosody</div></div>
+        <div class="ch-type">voice</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">008</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Vocal prosody exercise A + B</div></div>
+        <div class="ch-type">voice</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">009</div>
+        <div class="ch-bar-wrap"><div class="ch-bar check-in">Check in 3</div></div>
+        <div class="ch-type">regulation</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">010</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Therapeutic touch</div></div>
+        <div class="ch-type">embodied</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">011</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Therapeutic touch practice</div></div>
+        <div class="ch-type">embodied practice</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">012</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Finale roleplay — Olu</div></div>
+        <div class="ch-type">roleplay</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">013</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Feedback for finale Olu</div></div>
+        <div class="ch-type">debrief</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">014</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Finale roleplay — Alex</div></div>
+        <div class="ch-type">roleplay</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">015</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">Feedback for finale Alex</div></div>
+        <div class="ch-type">debrief</div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-num">016</div>
+        <div class="ch-bar-wrap"><div class="ch-bar">End</div></div>
+        <div class="ch-type">close</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ STATS ══ -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="num">33</div>
+      <div class="lbl">total chapters</div>
+    </div>
+    <div class="stat-card hi">
+      <div class="num">5</div>
+      <div class="lbl">chapters annotated (012–016, Part 1)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">15%</div>
+      <div class="lbl">of the full script covered</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10</div>
+      <div class="lbl">regulation / check-in beats across both parts</div>
+    </div>
+  </div>
+
+  <div class="context-note">
+    The annotated section sits in the final third of Part 1, immediately before the closing check-in. It follows the two most physically demanding chapters — 011 (hard face / soft face) and the kind eyes sequence (008) — and precedes the Part 1 close. The listening diptych (013–016) is the culminating practice arc of Part 1, placing it here is structural: participants have been prepared through pain recall, observation training, and embodied face work before they meet the fake-listening trap. <strong>Part 2 then moves into kinesthetic empathy and vocal prosody — the body layer — before culminating in the therapeutic touch sequence and the full clinical roleplay finale.</strong>
+  </div>
+
+  <div class="footer">SIMFONIK / SIM MAKER · Script structure map · HP Parts 1 &amp; 2 · May 2026</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The inject catalogue — a plain-English guide</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #1a1a18;
+  background: #fafaf8;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+
+/* ── Header ── */
+.doc-header {
+  border-bottom: 2px solid #1a1a18;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+.doc-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.doc-header .sub {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #7a7a74;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Body text ── */
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: 16px;
+  color: #4a4a46;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #e0e0d8;
+}
+
+/* ── Section ── */
+.section { margin-bottom: 2.5rem; }
+.section h2 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #7a7a74;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #e0e0d8;
+}
+.section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a18;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+}
+.section h3:first-of-type { margin-top: 0; }
+
+/* ── Callout box ── */
+.callout {
+  background: #f0faf5;
+  border-left: 3px solid #1D9E75;
+  border-radius: 0 6px 6px 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+  font-size: 14px;
+  color: #1a1a18;
+  line-height: 1.65;
+}
+.callout strong { color: #085041; }
+
+.callout-purple {
+  background: #EEEDFE;
+  border-left: 3px solid #7F77DD;
+  border-radius: 0 6px 6px 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+  font-size: 14px;
+  color: #1a1a18;
+  line-height: 1.65;
+}
+.callout-purple strong { color: #3C3489; }
+
+/* ── Family table ── */
+.family-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 13.5px;
+}
+.family-table th {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #7a7a74;
+  text-align: left;
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  border-bottom: 1px solid #c8c8c0;
+  font-weight: 700;
+}
+.family-table td {
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 0.5px solid #e8e8e0;
+  vertical-align: top;
+  line-height: 1.55;
+}
+.family-table tr:last-child td { border-bottom: none; }
+.family-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.fam-a { color: #5F5E5A; }
+.fam-b { color: #0F6E56; }
+.fam-c { color: #185FA5; }
+.fam-d { color: #993C1D; }
+.fam-e { color: #854F0B; }
+.fam-f { color: #993556; }
+.fam-g { color: #3B6D11; }
+
+/* ── Mode tags ── */
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 1rem 0 1.5rem;
+}
+.mode-card {
+  border: 0.5px solid #ddddd5;
+  border-radius: 5px;
+  padding: 0.6rem 0.85rem;
+  background: #f7f7f4;
+}
+.mode-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 20px;
+  margin-bottom: 0.3rem;
+  background: #EEEDFE;
+  color: #3C3489;
+}
+.mode-card .desc {
+  font-size: 12.5px;
+  color: #4a4a46;
+  line-height: 1.5;
+}
+.mode-card .example {
+  font-size: 11.5px;
+  color: #888780;
+  font-style: italic;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* ── Example quote ── */
+.script-quote {
+  font-style: italic;
+  color: #4a4a46;
+  background: #f4f4f0;
+  border-left: 2px solid #c8c8c0;
+  padding: 0.6rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Dimension mini-table ── */
+.dim-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 0.5px solid #e8e8e0;
+  font-size: 13.5px;
+}
+.dim-row:last-child { border-bottom: none; }
+.dim-q {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #888780;
+  font-weight: 700;
+  width: 160px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+.dim-a { color: #1a1a18; }
+
+/* ── Anti-pattern box ── */
+.anti {
+  background: #FAECE7;
+  border-left: 3px solid #D85A30;
+  border-radius: 0 6px 6px 0;
+  padding: 0.75rem 1rem;
+  margin: 0.6rem 0;
+  font-size: 13.5px;
+  color: #4A1B0C;
+  line-height: 1.6;
+}
+.anti strong { color: #712B13; }
+
+/* ── Footer ── */
+.footer {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: #b0b0a8;
+  padding-top: 1.5rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid #e0e0d8;
+  text-align: center;
+}
+
+@media print {
+  body { background: white; }
+  .page { padding: 2rem; }
+}
+@media (max-width: 600px) {
+  .mode-grid { grid-template-columns: 1fr; }
+  .page { padding: 1.5rem 1rem 3rem; }
+  .dim-q { width: 110px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <h1>The inject catalogue — a plain-English guide</h1>
+    <div class="sub">SIMFONIK / SIM MAKER · v4 · May 2026</div>
+  </div>
+
+  <p class="lead">Every line of audio in a SIMFONIK scenario is an inject — a single instruction delivered to a player at a specific moment. The inject catalogue is the reference that names, distinguishes, and explains every type of inject used across the scripts. Think of it as the grammar book for the SIMFONIK language: it doesn't write the sentences, but it tells you what every kind of word does and when to use it.</p>
+
+
+  <!-- ══ WHAT IS AN INJECT ══ -->
+  <div class="section">
+    <h2>What is an inject?</h2>
+    <p>An inject is any audio instruction that lands in a player's earpiece during a session. It might tell them to do something physical, say something out loud, think something internally, observe their partner, or simply wait. Every chapter of a SIMFONIK script is made up of a sequence of injects, layered and timed so the two players experience a coordinated interaction — even though they're often hearing completely different things.</p>
+    <div class="callout">
+      <strong>A good inject rule of thumb:</strong> at every moment, each player should know exactly what they're supposed to think, notice, say, do, withhold, or wait for. If they're guessing, the inject hasn't done its job — unless the not-knowing is deliberate.
+    </div>
+  </div>
+
+
+  <!-- ══ THE FIVE QUESTIONS ══ -->
+  <div class="section">
+    <h2>The five questions every inject answers</h2>
+    <p>Each inject is described along five dimensions. Together, these five questions give you a complete picture of what a given line is doing and why.</p>
+
+    <div style="margin: 1rem 0 1.5rem;">
+      <div class="dim-row">
+        <div class="dim-q">What is it doing?</div>
+        <div class="dim-a">Its function — the job it performs. There are 32 named function types, grouped into 7 families (see below).</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-q">How does it sound?</div>
+        <div class="dim-a">Its tone — neutral, empathetic, authoritative, provocative, flat, charged, and so on.</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-q">Where does it come from?</div>
+        <div class="dim-a">Its source — the narrator, a character, the player's own internal voice, the platform system, the supervisor, ambient sound.</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-q">When does it arrive?</div>
+        <div class="dim-a">Its timing — linear (in sequence), layered (running underneath something else), timed, simultaneous with the other player's stream, staggered, interruptive.</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-q">What does it do to the player?</div>
+        <div class="dim-a">Its relational impact — empowers, frames, regulates, pressures, discomforts, shifts perspective, amplifies voice, creates dissonance, and so on.</div>
+      </div>
+    </div>
+
+    <p>Most injects only exercise three or four of these dimensions explicitly — the others are implied by context. But all five are there if you look for them.</p>
+  </div>
+
+
+  <!-- ══ MODE TAGS ══ -->
+  <div class="section">
+    <h2>The six mode tags — what the player is being asked to do</h2>
+    <p>Every inject gets one primary mode tag. This is the most practical label in the whole system — the one that lives at the script level and tells you, at a glance, what kind of response the inject is calling for.</p>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-tag">ACT</div>
+        <div class="desc">Take a visible physical action.</div>
+        <div class="example">"Stand up and move your chair next to them."</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">SPEAK</div>
+        <div class="desc">Say something out loud — exact words or own words.</div>
+        <div class="example">"Say: I can't sleep. I wake up all the time."</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">REFLECT</div>
+        <div class="desc">Think — internal framing, emotional context, memory.</div>
+        <div class="example">"You know what it's like. You've been through some stuff."</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">ATTEND</div>
+        <div class="desc">Observe — focus on the partner's behaviour, tone, body.</div>
+        <div class="example">"How are they behaving? Can you get a sense of their emotions?"</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">PRESSURE</div>
+        <div class="desc">Adds urgency, tension, or constraint.</div>
+        <div class="example">"You have one minute left."</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-tag">PAUSE</div>
+        <div class="desc">Designed silence — the absence of audio is intentional.</div>
+        <div class="example">"Dead space." / no audio for 8 seconds.</div>
+      </div>
+    </div>
+
+    <p>An inject can carry a secondary mode tag if two things are happening at once — but if two functions compete equally, the guidance is to split them into two consecutive injects rather than cram both into one.</p>
+  </div>
+
+
+  <!-- ══ SEVEN FAMILIES ══ -->
+  <div class="section">
+    <h2>The seven function families — what injects are for</h2>
+    <p>The 32 individual inject types are grouped into seven families. The families are organised roughly in order of when they tend to appear in a session — you always open with A, you always regulate with B before demanding emotional work, and the roleplay and voice work in G tend to come later.</p>
+
+    <table class="family-table">
+      <thead>
+        <tr>
+          <th style="width:80px">Family</th>
+          <th>What it covers</th>
+          <th>In plain English</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="family-label fam-a">A — Session management</span></td>
+          <td>Welcome, identity framing, safety, participation rules, open and close.</td>
+          <td>The scaffolding around the experience — everything that isn't scenario content but holds the scenario together.</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-b">B — Safety &amp; regulation</span></td>
+          <td>Safety scans, somatic grounding, breath work, body wake-up, co-regulation, consent, opt-down routes.</td>
+          <td>Settling the nervous system before and after demanding content. The scripts run a regulation beat between every major piece of emotional work — this is not optional ornament.</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-c">C — Relational setup</span></td>
+          <td>Seating, pair acknowledgement, role allocation, proximity.</td>
+          <td>Establishing who the two players are to each other, where they are in space, and what is unequal between them. The structural conditions that make the scenario possible.</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-d">D — Reflective &amp; cognitive</span></td>
+          <td>Self-reflection, memory recall, pain recall, anti-assumption, ethical injects, internal distraction.</td>
+          <td>Work that happens inside the player's head — framing, memory, doubt, and the occasional deliberate disruption of thought (the fake-listening monologue is the prime example).</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-e">E — Attention &amp; observation</span></td>
+          <td>Partner observation, emotional inference, soft focus, eye-contact training, listening posture, full-body listening, fake listening, repeat-back.</td>
+          <td>Directing what the player looks at and how. The foundational noticing skills that empathy depends on — usually developed through contrast: the wrong version first, then the right version.</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-f">F — Embodied &amp; relational</span></td>
+          <td>Face training, kind eyes, three types of mirroring (breath, movement, posture), mimicry warning, therapeutic touch sequence.</td>
+          <td>Empathy delivered through the body — face, breath, posture, gesture, and physical contact. The layer where everything else becomes visible.</td>
+        </tr>
+        <tr>
+          <td><span class="family-label fam-g">G — Voice, dialogue &amp; roleplay</span></td>
+          <td>Vocal prosody, meet-and-match, de-escalation arc, exact lines, own-words speech, scenario handover, improvisation release, roleplay closure, peer feedback, swap-role, debrief, designed silence, cues.</td>
+          <td>The largest family by far, because voice and roleplay carry most of the scenario weight. Everything from "say this exact phrase" to "the roleplay is yours now."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ══ HOW INJECTS WORK TOGETHER ══ -->
+  <div class="section">
+    <h2>How injects work together</h2>
+
+    <h3>Layering</h3>
+    <p>Some injects don't replace each other — they run simultaneously. The most striking example in the scripts is the fake-listening exercise: Player A receives an instruction to pretend to listen (E7), while a continuous stream of mundane inner-monologue questions (D6) plays underneath in the same earpiece at the same time. Neither inject is optional; the combination is the pedagogy.</p>
+
+    <h3>Simultaneous-paired streaming</h3>
+    <p>At any given moment, Player A and Player B may be hearing completely different injects. One player might be receiving a pain recall (D3) while the other is being told to listen with their whole body (E6). The platform routes different audio to different earpieces at the same beat — this asymmetry is core to how SIMFONIK works.</p>
+
+    <h3>The contrast principle</h3>
+    <p>Many of the most important injects only work in pairs — specifically, by experiencing the wrong version before the right one. Kind eyes works because you've felt the threat of squinting. Full-body listening lands because you've just experienced what fake listening feels like from the inside. The catalogue calls these diptychs, and recognising them is essential to understanding why the script is sequenced the way it is.</p>
+
+    <div class="callout-purple">
+      <strong>The key pattern to remember:</strong> SIMFONIK rarely teaches a concept by stating it. It teaches by getting you to feel it — usually through contrast. The inject that comes before the lesson is often just as important as the lesson itself.
+    </div>
+
+    <h3>The de-escalation arc</h3>
+    <p>One of the most carefully designed inject sequences in the catalogue is the de-escalation arc — used whenever a scenario involves an agitated or distressed person. The counterintuitive move it teaches is: meet the person at their intensity first before attempting to calm them. Going straight to calm reads as patronising and makes things worse. The arc is scripted in labelled percentage steps — 100%, 25%, 10%, 0% — with each step only permitted once the other person has softened.</p>
+    <div class="script-quote">"Oh no! I am not surprised that you're upset!!!" — the nurse meets the relative at 100%, rather than "Oh dear. Let's calm down."</div>
+  </div>
+
+
+  <!-- ══ WHAT THE CATALOGUE IS NOT ══ -->
+  <div class="section">
+    <h2>Common mistakes the catalogue guards against</h2>
+    <p>The catalogue includes a named list of anti-patterns — things that commonly go wrong in script-writing. A few worth knowing:</p>
+
+    <div class="anti"><strong>The premature-calm anti-pattern.</strong> Going straight to a quiet voice with a 100%-charged person. The other person reads it as dismissive and escalates further.</div>
+    <div class="anti"><strong>The overloaded inject.</strong> Trying to do reflection, framing, and instruction in one line. If it's doing three things, split it into three injects.</div>
+    <div class="anti"><strong>The consent tick-box.</strong> Asking for consent once at the start and forgetting it. Consent is live — it re-enters whenever the conditions shift.</div>
+    <div class="anti"><strong>The unscaffolded improvisation.</strong> Handing the roleplay over to the player before they have enough scripted handles to know where they are in the scene. Improvisation release only works after the player has been given enough structure to improvise from.</div>
+    <div class="anti"><strong>The skipped withdrawal.</strong> Ending a therapeutic touch sequence without an explicit phase for removing the hand. The withdrawal is a separate inject, not an implied close.</div>
+  </div>
+
+
+  <!-- ══ THE ONE-LINE VERSION ══ -->
+  <div class="section">
+    <h2>The one-line version</h2>
+    <div class="callout">
+      The inject catalogue is a named vocabulary for every move in a SIMFONIK script — what each line does, who delivers it, when it arrives, and what it produces in the person hearing it. Its job is to make the tacit logic of a Jaji-written scenario legible enough that someone else — or an AI — can understand, replicate, and eventually extend it.
+    </div>
+  </div>
+
+  <div class="footer">SIMFONIK / SIM MAKER · Inject catalogue plain-English guide · May 2026</div>
+
+</div>
+</body>
+</html>
