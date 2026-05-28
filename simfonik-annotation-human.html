@@ -32,7 +32,6 @@ body {
   padding: 2.5rem 2rem 5rem;
 }
 
-/* ── Header ── */
 .doc-header {
   border-bottom: 2px solid var(--ink);
   padding-bottom: 1.25rem;
@@ -53,7 +52,6 @@ body {
   text-transform: uppercase;
 }
 
-/* ── Annotator field ── */
 .annotator-row {
   display: flex;
   align-items: center;
@@ -88,7 +86,6 @@ body {
   margin-left: auto;
 }
 
-/* ── Instructions ── */
 .instructions {
   background: var(--raised);
   border: 1px solid var(--border);
@@ -102,7 +99,6 @@ body {
 }
 .instructions strong { color: var(--ink); }
 
-/* ── Progress bar ── */
 .progress-wrap {
   display: flex;
   align-items: center;
@@ -130,7 +126,6 @@ body {
   white-space: nowrap;
 }
 
-/* ── Section heading ── */
 .section-heading {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -142,7 +137,6 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── Beat card ── */
 .beat-card {
   border: 1px solid var(--border-strong);
   border-radius: 8px;
@@ -150,9 +144,8 @@ body {
   margin-bottom: 1.5rem;
   background: var(--raised);
 }
-.beat-card.complete {
-  border-color: #1D9E75;
-}
+.beat-card.complete { border-color: #1D9E75; }
+
 .beat-header {
   background: #f4f4f0;
   border-bottom: 1px solid var(--border-strong);
@@ -193,7 +186,6 @@ body {
 }
 .beat-card.complete .complete-tick { display: block; }
 
-/* ── Stream text ── */
 .stream-block {
   padding: 0.9rem 1.1rem;
   border-bottom: 1px solid var(--border);
@@ -227,10 +219,7 @@ body {
   font-style: italic;
 }
 
-/* ── Annotation area ── */
-.annotation-area {
-  padding: 0.9rem 1.1rem;
-}
+.annotation-area { padding: 0.9rem 1.1rem; }
 .annotation-area h3 {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -241,10 +230,7 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* ── Dimension row ── */
-.dimension {
-  margin-bottom: 0.9rem;
-}
+.dimension { margin-bottom: 0.9rem; }
 .dimension-label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -254,6 +240,7 @@ body {
   font-weight: 700;
   margin-bottom: 0.4rem;
 }
+
 .tag-options {
   display: flex;
   flex-wrap: wrap;
@@ -274,35 +261,40 @@ body {
 }
 .tag-btn:hover { opacity: 0.8; }
 
-/* Mode tags */
-.tag-mode-btn         { background: #f0effd; color: #7F77DD; border-color: #c9c6f5; }
+.tag-mode-btn          { background: #f0effd; color: #7F77DD; border-color: #c9c6f5; }
 .tag-mode-btn.selected { background: #EEEDFE; color: #3C3489; border-color: #7F77DD; }
 
-/* Inject family tags */
-.tag-inject-a-btn         { background: #f4f4f0; color: #5F5E5A; border-color: #D3D1C7; }
+.tag-inject-a-btn          { background: #f4f4f0; color: #5F5E5A; border-color: #D3D1C7; }
 .tag-inject-a-btn.selected { background: #F1EFE8; color: #2C2C2A; border-color: #888780; }
-.tag-inject-b-btn         { background: #f0faf5; color: #1D9E75; border-color: #9FE1CB; }
+.tag-inject-b-btn          { background: #f0faf5; color: #1D9E75; border-color: #9FE1CB; }
 .tag-inject-b-btn.selected { background: #E1F5EE; color: #085041; border-color: #1D9E75; }
-.tag-inject-c-btn         { background: #eef5fb; color: #378ADD; border-color: #B5D4F4; }
+.tag-inject-c-btn          { background: #eef5fb; color: #378ADD; border-color: #B5D4F4; }
 .tag-inject-c-btn.selected { background: #E6F1FB; color: #185FA5; border-color: #378ADD; }
-.tag-inject-d-btn         { background: #fdf0ec; color: #D85A30; border-color: #F0997B; }
+.tag-inject-d-btn          { background: #fdf0ec; color: #D85A30; border-color: #F0997B; }
 .tag-inject-d-btn.selected { background: #FAECE7; color: #712B13; border-color: #D85A30; }
-.tag-inject-e-btn         { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
+.tag-inject-e-btn          { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
 .tag-inject-e-btn.selected { background: #FAEEDA; color: #412402; border-color: #BA7517; }
-.tag-inject-f-btn         { background: #fdeef3; color: #D4537E; border-color: #ED93B1; }
+.tag-inject-f-btn          { background: #fdeef3; color: #D4537E; border-color: #ED93B1; }
 .tag-inject-f-btn.selected { background: #FBEAF0; color: #4B1528; border-color: #D4537E; }
-.tag-inject-g-btn         { background: #edfaf4; color: #639922; border-color: #C0DD97; }
+.tag-inject-g-btn          { background: #edfaf4; color: #639922; border-color: #C0DD97; }
 .tag-inject-g-btn.selected { background: #EAF3DE; color: #173404; border-color: #639922; }
 
-/* Timing tags */
-.tag-timing-btn         { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
+.tag-timing-btn          { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
 .tag-timing-btn.selected { background: #FAEEDA; color: #412402; border-color: #BA7517; }
 
-/* Impact tags */
-.tag-impact-btn         { background: #fdf0ec; color: #993C1D; border-color: #F5C4B3; }
+.tag-impact-btn          { background: #fdf0ec; color: #993C1D; border-color: #F5C4B3; }
 .tag-impact-btn.selected { background: #FAECE7; color: #4A1B0C; border-color: #D85A30; }
 
-/* Notes */
+.family-divider {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  margin: 0.5rem 0 0.3rem;
+  width: 100%;
+}
+
 .notes-wrap {
   margin-top: 0.8rem;
   border-top: 1px solid var(--border);
@@ -324,23 +316,13 @@ body {
 .notes-wrap textarea:focus { outline: 2px solid #7F77DD; outline-offset: 1px; }
 .notes-wrap textarea::placeholder { color: var(--ink-faint); font-style: italic; }
 
-/* ── Summary / Export ── */
 .export-section {
   margin-top: 3rem;
   border-top: 2px solid var(--ink);
   padding-top: 1.5rem;
 }
-.export-section h2 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.btn-row {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
+.export-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 1rem; }
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .btn {
   font-family: 'Courier New', monospace;
   font-size: 11px;
@@ -356,11 +338,7 @@ body {
   transition: all 0.12s;
 }
 .btn:hover { background: #f4f4f0; color: var(--ink); }
-.btn-primary {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
-}
+.btn-primary { background: var(--ink); color: #fff; border-color: var(--ink); }
 .btn-primary:hover { background: #333; }
 
 #summary-out {
@@ -378,9 +356,7 @@ body {
 }
 
 @media print {
-  .annotation-area h3 { display: none; }
   .tag-btn:not(.selected) { display: none; }
-  .notes-wrap textarea { border: none; padding: 0; }
   .btn-row, .export-section { display: none; }
   .progress-wrap { display: none; }
 }
@@ -395,7 +371,7 @@ body {
 
   <div class="doc-header">
     <h1>SIMFONIK Script Annotation — Human Control</h1>
-    <div class="subtitle">Healthcare Professional Part 1 · Chapters 012–016 · Annotate independently, then compare with AI output</div>
+    <div class="subtitle">Healthcare Professional Part 1 · Chapters 012–016 · Full catalogue — all options shown for every beat</div>
   </div>
 
   <div class="annotator-row">
@@ -405,7 +381,7 @@ body {
   </div>
 
   <div class="instructions">
-    <strong>How to use this sheet.</strong> Read each script beat carefully. Use the selectors below each beat to tag it across four dimensions: <strong>inject type</strong> (what the inject is doing), <strong>mode tag</strong> (what it instructs the player to do), <strong>timing</strong> (how it enters the scene), and <strong>relational impact</strong> (what it does to the participant). You can select multiple tags in each dimension. Add observations in the notes field. Work from your own reading — do not refer to the inject catalogue or the AI annotation while completing this sheet. When finished, use the export button to copy your annotations.
+    <strong>How to use this sheet.</strong> Read each script beat carefully. Use the selectors to tag it across four dimensions: <strong>inject type</strong> (what the inject is doing), <strong>mode tag</strong> (what it instructs the player to do), <strong>timing</strong> (how it enters the scene), and <strong>relational impact</strong> (what it does to the participant). All 32 inject types from the full catalogue are shown for every beat — select as many as apply. Add observations in the notes field. Work from your own reading — do not refer to the AI annotation while completing this sheet.
   </div>
 
   <div class="progress-wrap">
@@ -414,886 +390,9 @@ body {
     <span class="progress-label" id="progress-text">0 / 13 beats annotated</span>
   </div>
 
+  <!-- beats injected by JS -->
+  <div id="beats-container"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- BEATS DATA                              -->
-  <!-- ═══════════════════════════════════════ -->
-
-  <div class="section-heading">Chapter 012 — check in 4</div>
-
-  <div class="beat-card" data-beat="012-01">
-    <div class="beat-header">
-      <span class="beat-ref">012_01_STU</span>
-      <span class="beat-chapter">Check in 4 — participant</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"Ok. Check in. You know what to do now. Clap hard and rub your hands together. Rub your arms up and down shoulder to wrist — wrist to shoulder. And now rub your legs equally as vigorously reminding yourself that you are here and present. Let's have a little stretch out — just reaching out and up to the sky — like you are yawning with your whole body. Now stand up and swap seats with your partner. Sit back down in your partner's chair."</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type — what is this beat doing? (select all that apply)</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-a-btn" data-val="A1 Welcome / Orientation">A1 Welcome</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A2 Professional identity framing">A2 Prof. identity framing</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A3 Psychological safety">A3 Psych. safety</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A4 Participation rule">A4 Participation rule</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A5 Platform procedural">A5 Platform procedural</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A6 End-of-experience">A6 End-of-experience</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B1 Safety scan">B1 Safety scan</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B2 Environmental orientation">B2 Environmental orient.</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B3 Somatic grounding">B3 Somatic grounding</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B4 Breath regulation">B4 Breath regulation</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B5 Body wake-up">B5 Body wake-up</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B6 Co-regulation">B6 Co-regulation</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B7 Consent / Boundary">B7 Consent / Boundary</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B8 Safety boundary / opt-down">B8 Opt-down</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C1 Seating / Spatial setup">C1 Seating / Spatial</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C2 Pair acknowledgement">C2 Pair acknowledgement</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C3 Role allocation">C3 Role allocation</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C4 Patient / Nurse / Context">C4 Patient/Nurse/Context</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C5 Proximity">C5 Proximity</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D2 Memory recall">D2 Memory recall</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D3 Pain recall">D3 Pain recall</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D4 Anti-assumption">D4 Anti-assumption</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D5 Ethical">D5 Ethical</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D6 Internal distraction">D6 Internal distraction</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E1 Partner observation">E1 Partner observation</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E2 Emotional inference">E2 Emotional inference</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E3 Soft focus / Gaze">E3 Soft focus</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E4 Eye-contact training">E4 Eye-contact</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E5 Listening posture">E5 Listening posture</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E6 Full-body listening">E6 Full-body listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E7 Fake-listening">E7 Fake-listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E8 Repeat-back">E8 Repeat-back</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E9 Observational">E9 Observational</button>
-          <button class="tag-btn tag-inject-f-btn" data-val="F1 Face training">F1 Face training</button>
-          <button class="tag-btn tag-inject-f-btn" data-val="F2 Mirroring">F2 Mirroring</button>
-          <button class="tag-btn tag-inject-f-btn" data-val="F3 Mimicry warning">F3 Mimicry warning</button>
-          <button class="tag-btn tag-inject-f-btn" data-val="F4 Therapeutic touch">F4 Therapeutic touch</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G6 Exact-line-to-repeat">G6 Exact-line</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G7 Own-words speech">G7 Own-words speech</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G8 Ask-a-question">G8 Ask-a-question</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G10 Observe-and-wait">G10 Observe-and-wait</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G11 Designed silence">G11 Designed silence</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G12 Role-defining">G12 Role-defining</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G16 Scenario handover">G16 Scenario handover</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G18 One-minute warning">G18 One-min warning</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G19 Roleplay closure">G19 Roleplay closure</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G20 Thank-your-partner">G20 Thank partner</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G21 Peer feedback">G21 Peer feedback</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G22 Swap-role">G22 Swap-role</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G23 Shared-theory">G23 Shared-theory</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G24 Cue / Signal">G24 Cue / Signal</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G26 Discussion / Countdown">G26 Discussion / Countdown</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag — what does it instruct the player to do?</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT — do something</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK — say out loud</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT — inner monologue</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND — observe / focus</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE — adds urgency</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE — designed silence</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing — how does it enter the scene?</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Looped">Looped</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Interruptive">Interruptive</button>
-          <button class="tag-btn tag-timing-btn" data-val="Escalating">Escalating</button>
-          <button class="tag-btn tag-timing-btn" data-val="De-escalating">De-escalating</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Randomised">Randomised</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact — what does it do to the participant?</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Invites">Invites</button>
-          <button class="tag-btn tag-impact-btn" data-val="Pressures">Pressures</button>
-          <button class="tag-btn tag-impact-btn" data-val="Constrains">Constrains</button>
-          <button class="tag-btn tag-impact-btn" data-val="Silences">Silences</button>
-          <button class="tag-btn tag-impact-btn" data-val="Discomforts">Discomforts</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Escalates">Escalates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Creates dissonance">Creates dissonance</button>
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Regulates">Regulates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Co-regulates">Co-regulates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-          <button class="tag-btn tag-impact-btn" data-val="Nudges">Nudges</button>
-          <button class="tag-btn tag-impact-btn" data-val="Steers">Steers</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations / questions</div>
-        <textarea placeholder="Note anything that doesn't fit the taxonomy, surprises you, or you're uncertain about…"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="012-01-sup">
-    <div class="beat-header">
-      <span class="beat-ref">012_01_SUP</span>
-      <span class="beat-chapter">Check in 4 — supervisor only</span>
-      <span class="layer-pill layer-sup">Supervisor stream</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream stream-sup">
-        <div class="stream-label">Supervisor narration (third-person, present tense)</div>
-        <div class="stream-text">"As the participants swap seats you can stand up and have a little wiggle around and shake out any stiffness before sitting back down."</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">What is this supervisor line doing?</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-b-btn" data-val="B3 Somatic grounding">B3 Somatic grounding</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B6 Co-regulation">B6 Co-regulation</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A5 Platform procedural">A5 Platform procedural</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G27 Supervisor / Next-step">G27 Supervisor next-step</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C1 Seating / Spatial setup">C1 Seating / Spatial</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E1 Partner observation">E1 Partner observation</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="What do you notice about the supervisor stream's relationship to the participant stream?"></textarea>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="section-heading">Chapter 013 — full body listening and fake listening</div>
-
-  <div class="beat-card" data-beat="013-01">
-    <div class="beat-header">
-      <span class="beat-ref">013_01_STU</span>
-      <span class="beat-chapter">Theory framing — both players</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"A key part of empathy is listening. Sometimes we think we are listening but actually we are fooling ourselves and others all the time. It's easy to fake listen. To be listened to is a striking experience partly because it is so rare. The real problem with fake listening is that patients know it; they can feel it. It isn't authentic, it isn't engaged, and it doesn't build trust with your patient. We want to listen with our intuition. We want to hear what the patient is NOT saying. Because patients open up when they know they're really being listened to… Fake listening is where our awareness is primarily on ourselves and our self-talk: our own thoughts, feelings, judgments and conclusions. We can appear to be listening and even make encouraging noises — but our internal dialogue is quite different. When we seek to engage and empathise with a patient we need to move beyond our own thoughts and needs. Let's try some fake listening."</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-a-btn" data-val="A2 Professional identity framing">A2 Prof. identity framing</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A3 Psychological safety">A3 Psych. safety</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D6 Internal distraction">D6 Internal distraction</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G16 Scenario handover">G16 Scenario handover</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G23 Shared-theory">G23 Shared-theory</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G1 Vocal prosody theory">G1 Theory inject</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Discomforts">Discomforts</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Creates dissonance">Creates dissonance</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="The closing line ('Let's try some fake listening') — what kind of inject is it? Does it change the function of everything before it?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="013-03">
-    <div class="beat-header">
-      <span class="beat-ref">013_03_STU_A / 013_03_STU_B</span>
-      <span class="beat-chapter">Fake listening — simultaneous-paired</span>
-      <span class="layer-pill layer-split">Split audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream-grid">
-        <div class="stream">
-          <div class="stream-label">Player A hears</div>
-          <div class="stream-text">"In a moment your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue (which we will provide). Do not interrupt your partner but instead try to convince them that you are listening. Ending in 5…4…3…2…1"</div>
-        </div>
-        <div class="stream">
-          <div class="stream-label">Player B hears</div>
-          <div class="stream-text">"When prompted start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"</div>
-        </div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type — tag each player stream separately if they differ</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-e-btn" data-val="E7 Fake-listening">E7 Fake-listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E6 Full-body listening">E6 Full-body listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E1 Partner observation">E1 Partner observation</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D6 Internal distraction">D6 Internal distraction</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G7 Own-words speech">G7 Own-words speech</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G24 Cue / Signal">G24 Cue / Signal</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G18 One-minute warning">G18 One-min warning</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G22 Swap-role">G22 Swap-role</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C4 Patient / Nurse / Context">C4 Context-setting</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag — for each player if different</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Demonstrates">Demonstrates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Creates dissonance">Creates dissonance</button>
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Discomforts">Discomforts</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Pressures">Pressures</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Constrains">Constrains</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="How do you tag a beat where A and B are getting fundamentally different instructions? Does the taxonomy handle this?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="013-qim">
-    <div class="beat-header">
-      <span class="beat-ref">013_QIM</span>
-      <span class="beat-chapter">Inner monologue — separate audio layer</span>
-      <span class="layer-pill layer-qim">QIM layer</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream stream-qim">
-        <div class="stream-label">Player A only — runs continuously underneath 013_03 and 013_04</div>
-        <div class="stream-text">"How much longer do I have to listen to this? I wonder if I can get someone else to take over? Did I turn my phone off? How shall I respond to that email? Does Amazon deliver to the hospital? The vegetables in my fridge… they still ok to eat? Have I got to make an appointment or will they call me? Did I call back like I said I would? Why did I go to bed so late last night? Have I had enough water today? I think I need a holiday. I wonder if I can go home early today? Have I filled out all the right forms? What shall I do this weekend? How many shifts am I on this week? I wonder if my manager got my email. Did I confirm that appointment? Do I need to check how much tax I'm paying? What time do I start tomorrow? Did I take the laundry out of the dryer? What time does the post office close?"</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-d-btn" data-val="D6 Internal distraction">D6 Internal distraction</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D2 Memory recall">D2 Memory recall</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E7 Fake-listening">E7 Fake-listening</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G15 Repetitive">G15 Repetitive</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Looped">Looped</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Interruptive">Interruptive</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Splits attention">Splits attention</button>
-          <button class="tag-btn tag-impact-btn" data-val="Creates dissonance">Creates dissonance</button>
-          <button class="tag-btn tag-impact-btn" data-val="Discomforts">Discomforts</button>
-          <button class="tag-btn tag-impact-btn" data-val="Demonstrates">Demonstrates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Pressures">Pressures</button>
-          <button class="tag-btn tag-impact-btn" data-val="Constrains">Constrains</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="This is listed in the script as a separate section, not a numbered beat. Does it feel like an inject? How would you classify it structurally?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="013-04">
-    <div class="beat-header">
-      <span class="beat-ref">013_04_STU_A / 013_04_STU_B</span>
-      <span class="beat-chapter">Fake listening — roles inverted</span>
-      <span class="layer-pill layer-split">Split audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream-grid">
-        <div class="stream">
-          <div class="stream-label">Player A hears</div>
-          <div class="stream-text">"Now you can respond to your partner and start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"</div>
-        </div>
-        <div class="stream">
-          <div class="stream-label">Player B hears</div>
-          <div class="stream-text">"Now your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue which we will provide. Do not interrupt your partner but instead try to convince them that you are really listening."</div>
-        </div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-e-btn" data-val="E7 Fake-listening">E7 Fake-listening</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D6 Internal distraction">D6 Internal distraction</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G7 Own-words speech">G7 Own-words speech</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G22 Swap-role">G22 Swap-role</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G24 Cue / Signal">G24 Cue / Signal</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Creates dissonance">Creates dissonance</button>
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Demonstrates">Demonstrates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="This is structurally identical to 013_03 with roles swapped. Does that make it the same inject, or a different one?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="013-05">
-    <div class="beat-header">
-      <span class="beat-ref">013_05_STU</span>
-      <span class="beat-chapter">Debrief — fake listening</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"Debrief. Discuss with your partner how you found having that split attention? Did you zone out completely? Were you struggling to keep connection? Take a few minutes to talk to your partner and discuss the experience. Two minutes starting now. Go! Bring your discussion to a close. Your debrief is ending in 5…4…3…2…1"</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-g-btn" data-val="G26 Discussion / Countdown">G26 Discussion / Countdown</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G21 Peer feedback">G21 Peer feedback</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G19 Roleplay closure">G19 Roleplay closure</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G18 One-minute warning">G18 One-min warning</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Escalating">Escalating</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Pressures">Pressures</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="The countdown (5…4…3…2…1) closes the debrief. Is that part of the same inject, or a separate one?"></textarea>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="section-heading">Chapter 014 — real listening</div>
-
-  <div class="beat-card" data-beat="014-01">
-    <div class="beat-header">
-      <span class="beat-ref">014_01_STU</span>
-      <span class="beat-chapter">Theory — full body listening defined</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"Real listening, also known as full body listening, is listening without our own thoughts or personal agenda intruding. We notice what the other person says and how they say it — also picking up on what is unsaid. It includes non-verbal cues: leaning forward and making eye contact, for example. In full body listening all of our awareness is intently on the other person: their words, tone of voice, pauses, facial expressions, posture, emotions, energy and rhythm. We notice what lights them up and what deflates them. Our focus is so fixed on them that our own mental chatter vanishes and we speak with spontaneity. We also notice how our responses impact the other person."</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-g-btn" data-val="G23 Shared-theory">G23 Shared-theory</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E6 Full-body listening">E6 Full-body listening (definition)</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A2 Professional identity framing">A2 Prof. identity framing</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E5 Listening posture">E5 Listening posture</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="This chapter comes between the fake-listening exercise and the full-body listening practice. What work is it doing structurally?"></textarea>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="section-heading">Chapter 015 — check in 5</div>
-
-  <div class="beat-card" data-beat="015-01">
-    <div class="beat-header">
-      <span class="beat-ref">015_01_STU</span>
-      <span class="beat-chapter">Check in 5</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"It's been a lot — let's do a check in. Feel your hands by rubbing them together. Rub your arms vigorously. Shrug your shoulders up and down a couple of times. Feel your feet fully on the floor and wiggle your toes. And now push down through your sit bones and lengthen your spine towards the ceiling. Lift your arms up to the sky and do a big stretch. Place your hands firmly back on your legs and feel that you are still here and you are still solid."</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-b-btn" data-val="B3 Somatic grounding">B3 Somatic grounding</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B4 Breath regulation">B4 Breath regulation</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B5 Body wake-up">B5 Body wake-up</button>
-          <button class="tag-btn tag-inject-b-btn" data-val="B1 Safety scan">B1 Safety scan</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A3 Psychological safety">A3 Psych. safety</button>
-          <button class="tag-btn tag-inject-c-btn" data-val="C1 Seating / Spatial setup">C1 Seating / Spatial</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Regulates">Regulates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Grounds">Grounds</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="This is the 5th check-in of Part 1. Does the opening phrase 'It's been a lot' change the inject type, or just the tone?"></textarea>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="section-heading">Chapter 016 — practice good listening</div>
-
-  <div class="beat-card" data-beat="016-01">
-    <div class="beat-header">
-      <span class="beat-ref">016_01_STU_A / 016_01_STU_B</span>
-      <span class="beat-chapter">Full-body listening — A attends, B recalls</span>
-      <span class="layer-pill layer-split">Split audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream-grid">
-        <div class="stream">
-          <div class="stream-label">Player A hears</div>
-          <div class="stream-text">"I want you to imagine your whole body is an ear and you are going to listen with your whole body. Remember you cannot be doing anything else if you are truly listening to someone. Notice the change in the way you are listening and be sure to focus on everything they say. Afterwards you will need to repeat it back to them. Ask your partner to tell you about a time where they were not listened to. Go 5, 4, 3, 2, 1"</div>
-        </div>
-        <div class="stream">
-          <div class="stream-label">Player B hears</div>
-          <div class="stream-text">"Think about a time in your life when you felt you were not being heard, where you were not being listened to. When asked, tell your partner about this time in your life. Try to talk about as many details that you can remember. Try to recall who was involved and what the power dynamics were in the situation and the consequences for you. But most importantly try to remember how it made you feel, and explain this to your partner. Keep talking until you hear the signal to stop. Bring your sentence to an end. 5, 4, 3, 2, 1"</div>
-        </div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type — A stream / B stream</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-e-btn" data-val="E6 Full-body listening">E6 Full-body listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E7 Fake-listening">E7 Fake-listening</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E8 Repeat-back">E8 Repeat-back (pre-brief)</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E5 Listening posture">E5 Listening posture</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D3 Pain recall">D3 Pain recall</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D2 Memory recall">D2 Memory recall</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G7 Own-words speech">G7 Own-words speech</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G8 Ask-a-question">G8 Ask-a-question</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G24 Cue / Signal">G24 Cue / Signal</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G18 One-minute warning">G18 One-min warning</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Layered">Layered</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Discomforts">Discomforts</button>
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Co-regulates">Co-regulates</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="Compare this beat structurally to 013_03. Same slot — different injects. Does that feel like the same pattern to you?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="016-02">
-    <div class="beat-header">
-      <span class="beat-ref">016_02_STU_A / 016_02_STU_B</span>
-      <span class="beat-chapter">Repeat-back and observation</span>
-      <span class="layer-pill layer-split">Split audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream-grid">
-        <div class="stream">
-          <div class="stream-label">Player A hears</div>
-          <div class="stream-text">"Now you are going to repeat as much as you remember back to your partner. Start your sentence with the phrase 'what I heard you say was…' and then repeat back to them everything you heard them say. Ready? 'What I heard you say was…'. Bring your sentence to an end. 5, 4, 3, 2, 1"</div>
-        </div>
-        <div class="stream">
-          <div class="stream-label">Player B hears</div>
-          <div class="stream-text">"And now listen to your partner repeat what they heard you say. Your partner will repeat what they heard back to you. And you'll notice the level of detail they managed to capture. Observe how much their attentiveness allowed you to have space to be heard. 5, 4, 3, 2, 1"</div>
-        </div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-e-btn" data-val="E8 Repeat-back">E8 Repeat-back</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E9 Observational">E9 Observational</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G6 Exact-line-to-repeat">G6 Exact-line-to-repeat</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G10 Observe-and-wait">G10 Observe-and-wait</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G21 Peer feedback">G21 Peer feedback</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PAUSE">PAUSE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-          <button class="tag-btn tag-impact-btn" data-val="Empowers">Empowers</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="The scripted opening phrase 'what I heard you say was…' — is that a separate inject type, or part of E8?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="016-03-04">
-    <div class="beat-header">
-      <span class="beat-ref">016_03 / 016_04</span>
-      <span class="beat-chapter">Role swap — B speaks, A listens</span>
-      <span class="layer-pill layer-split">Split audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Note</div>
-        <div class="stream-text">016_03 and 016_04 are the structural mirror of 016_01 and 016_02 with A and B roles swapped. B now recalls a time of not being heard (D3) and A now full-body listens (E6), then B repeat-backs (E8) while A observes (G10).</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-g-btn" data-val="G22 Swap-role">G22 Swap-role</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E6 Full-body listening">E6 Full-body listening</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D3 Pain recall">D3 Pain recall</button>
-          <button class="tag-btn tag-inject-e-btn" data-val="E8 Repeat-back">E8 Repeat-back</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G10 Observe-and-wait">G10 Observe-and-wait</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Simultaneous-paired">Simultaneous-paired</button>
-          <button class="tag-btn tag-timing-btn" data-val="Staggered-paired">Staggered-paired</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
-        <textarea placeholder="Is this a new set of injects, or is G22 the only annotation needed, with the rest implied? How granular should the annotation be?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="beat-card" data-beat="016-05">
-    <div class="beat-header">
-      <span class="beat-ref">016_05_STU</span>
-      <span class="beat-chapter">Final debrief</span>
-      <span class="layer-pill layer-shared">Shared audio</span>
-      <span class="complete-tick">✓ annotated</span>
-    </div>
-    <div class="stream-block">
-      <div class="stream">
-        <div class="stream-label">Script</div>
-        <div class="stream-text">"Debrief. Take a few moments to discuss the experience of practising active listening. How did you find it helped you connect to one another? Were you able to focus on each other? Did you remember the important elements? 2 minutes starting now. Go! Bring your discussion to a close. Your Debrief is ending in 5-4-3-2-1"</div>
-      </div>
-    </div>
-    <div class="annotation-area">
-      <h3>Your annotation</h3>
-      <div class="dimension">
-        <div class="dimension-label">Inject type</div>
-        <div class="tag-options" data-dim="inject">
-          <button class="tag-btn tag-inject-g-btn" data-val="G26 Discussion / Countdown">G26 Discussion / Countdown</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G21 Peer feedback">G21 Peer feedback</button>
-          <button class="tag-btn tag-inject-d-btn" data-val="D1 Self-reflection">D1 Self-reflection</button>
-          <button class="tag-btn tag-inject-g-btn" data-val="G19 Roleplay closure">G19 Roleplay closure</button>
-          <button class="tag-btn tag-inject-a-btn" data-val="A6 End-of-experience">A6 End-of-experience</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Mode tag</div>
-        <div class="tag-options" data-dim="mode">
-          <button class="tag-btn tag-mode-btn" data-val="ACT">ACT</button>
-          <button class="tag-btn tag-mode-btn" data-val="SPEAK">SPEAK</button>
-          <button class="tag-btn tag-mode-btn" data-val="REFLECT">REFLECT</button>
-          <button class="tag-btn tag-mode-btn" data-val="ATTEND">ATTEND</button>
-          <button class="tag-btn tag-mode-btn" data-val="PRESSURE">PRESSURE</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Timing</div>
-        <div class="tag-options" data-dim="timing">
-          <button class="tag-btn tag-timing-btn" data-val="Linear">Linear</button>
-          <button class="tag-btn tag-timing-btn" data-val="Timed">Timed</button>
-          <button class="tag-btn tag-timing-btn" data-val="Escalating">Escalating</button>
-        </div>
-      </div>
-      <div class="dimension">
-        <div class="dimension-label">Relational impact</div>
-        <div class="tag-options" data-dim="impact">
-          <button class="tag-btn tag-impact-btn" data-val="Amplifies voice">Amplifies voice</button>
-          <button class="tag-btn tag-impact-btn" data-val="Frames">Frames</button>
-          <button class="tag-btn tag-impact-btn" data-val="Pressures">Pressures</button>
-          <button class="tag-btn tag-impact-btn" data-val="Re-orients">Re-orients</button>
-          <button class="tag-btn tag-impact-btn" data-val="Validates">Validates</button>
-          <button class="tag-btn tag-impact-btn" data-val="Shifts perspective">Shifts perspective</button>
-        </div>
-      </div>
-      <div class="notes-wrap">
-        <div class="dimension-label" style="margin-bottom:0.4rem">Overall observations — anything the taxonomy couldn't capture across these five chapters?</div>
-        <textarea rows="5" placeholder="Use this space for any observations about the annotation exercise itself — gaps in the taxonomy, ambiguous cases, things that surprised you, or structural patterns you noticed that aren't named in the catalogue."></textarea>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ── Export ── -->
   <div class="export-section">
     <h2>Export your annotations</h2>
     <div class="btn-row">
@@ -1307,90 +406,514 @@ body {
 </div>
 
 <script>
-  document.getElementById('date-out').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+// ═══════════════════════════════════════════════
+// FULL CATALOGUE — single source of truth
+// ═══════════════════════════════════════════════
 
-  const TOTAL_BEATS = document.querySelectorAll('.beat-card').length;
+const INJECT_FAMILIES = [
+  {
+    label: 'A — Session management',
+    cls: 'tag-inject-a-btn',
+    tags: [
+      'A1 Welcome / Orientation',
+      'A2 Professional identity framing',
+      'A3 Psychological safety',
+      'A4 Participation rule',
+      'A5 Platform procedural',
+      'A6 End-of-experience',
+    ]
+  },
+  {
+    label: 'B — Safety & regulation',
+    cls: 'tag-inject-b-btn',
+    tags: [
+      'B1 Safety scan',
+      'B2 Environmental orientation',
+      'B3 Somatic grounding',
+      'B4 Breath regulation',
+      'B5 Body wake-up',
+      'B6 Co-regulation',
+      'B7 Consent / Boundary',
+      'B8 Opt-down framing',
+    ]
+  },
+  {
+    label: 'C — Relational setup',
+    cls: 'tag-inject-c-btn',
+    tags: [
+      'C1 Seating / Spatial setup',
+      'C2 Pair acknowledgement',
+      'C3 Role allocation',
+      'C4 Patient / Nurse / Context',
+      'C5 Proximity',
+    ]
+  },
+  {
+    label: 'D — Reflective & cognitive',
+    cls: 'tag-inject-d-btn',
+    tags: [
+      'D1 Self-reflection',
+      'D2 Memory recall',
+      'D3 Pain recall',
+      'D4 Anti-assumption',
+      'D5 Ethical',
+      'D6 Internal distraction',
+    ]
+  },
+  {
+    label: 'E — Attention & observation',
+    cls: 'tag-inject-e-btn',
+    tags: [
+      'E1 Partner observation',
+      'E2 Emotional inference',
+      'E3 Soft focus / Gaze',
+      'E4 Eye-contact training',
+      'E5 Listening posture',
+      'E6 Full-body listening',
+      'E7 Fake-listening',
+      'E8 Repeat-back',
+      'E9 Observational',
+    ]
+  },
+  {
+    label: 'F — Embodied & relational',
+    cls: 'tag-inject-f-btn',
+    tags: [
+      'F1 Face training',
+      'F2 Mirroring (breath)',
+      'F3 Mirroring (movement)',
+      'F4 Mirroring (posture)',
+      'F5 Mimicry warning',
+      'F6 Therapeutic touch sequence',
+    ]
+  },
+  {
+    label: 'G — Voice, dialogue & roleplay',
+    cls: 'tag-inject-g-btn',
+    tags: [
+      'G1 Vocal prosody theory',
+      'G2 Prosody warm-up',
+      'G3 Meet-and-match',
+      'G4 Intensity-level labelling',
+      'G5 De-escalation arc',
+      'G6 Exact-line-to-repeat',
+      'G7 Own-words speech',
+      'G8 Ask-a-question',
+      'G9 Response instruction',
+      'G10 Observe-and-wait',
+      'G11 Designed silence',
+      'G12 Role-defining',
+      'G13 Institutional procedural',
+      'G14 Disruptive',
+      'G15 Repetitive',
+      'G16 Scenario handover',
+      'G17 Improvisation release',
+      'G18 One-minute warning',
+      'G19 Roleplay closure',
+      'G20 Thank-your-partner',
+      'G21 Peer feedback',
+      'G22 Swap-role',
+      'G23 Shared-theory',
+      'G24 Cue / Signal',
+      'G25 Supervisor handover',
+      'G26 Discussion / Countdown',
+    ]
+  },
+];
 
-  function updateProgress() {
-    const annotated = document.querySelectorAll('.beat-card.complete').length;
-    const pct = Math.round((annotated / TOTAL_BEATS) * 100);
-    document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-text').textContent = annotated + ' / ' + TOTAL_BEATS + ' beats annotated';
-  }
+const MODE_TAGS = [
+  { val: 'ACT',      desc: 'Do / take a visible action' },
+  { val: 'SPEAK',    desc: 'Say something out loud' },
+  { val: 'REFLECT',  desc: 'Inner monologue / internal framing' },
+  { val: 'ATTEND',   desc: 'Observe / focus on partner' },
+  { val: 'PRESSURE', desc: 'Adds urgency or tension' },
+  { val: 'PAUSE',    desc: 'Designed silence' },
+];
 
-  function checkComplete(card) {
-    const hasTags = card.querySelector('.tag-btn.selected') !== null;
-    const hasNotes = Array.from(card.querySelectorAll('textarea')).some(t => t.value.trim().length > 0);
-    card.classList.toggle('complete', hasTags || hasNotes);
-    updateProgress();
-  }
+const TIMING_TAGS = [
+  'Linear', 'Looped', 'Timed', 'Responsive', 'Randomised',
+  'Interruptive', 'Layered', 'Escalating', 'De-escalating',
+  'Simultaneous-paired', 'Staggered-paired',
+];
 
-  document.querySelectorAll('.tag-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('selected');
-      checkComplete(btn.closest('.beat-card'));
+const IMPACT_TAGS = [
+  'Empowers', 'Validates', 'Nudges', 'Frames', 'Invites', 'Steers',
+  'Pressures', 'Persuades', 'Constrains', 'Silences', 'Discomforts',
+  'Shifts perspective', 'Escalates', 'Creates dissonance',
+  'Amplifies voice', 'Grounds', 'Re-orients', 'Regulates', 'Co-regulates',
+  'Demonstrates', 'Splits attention',
+];
+
+// ═══════════════════════════════════════════════
+// BEAT DATA
+// ═══════════════════════════════════════════════
+
+const SECTIONS = [
+  {
+    heading: 'Chapter 012 — check in 4',
+    beats: [
+      {
+        id: '012-01',
+        ref: '012_01_STU',
+        chapter: 'Check in 4 — participant',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"Ok. Check in. You know what to do now. Clap hard and rub your hands together. Rub your arms up and down shoulder to wrist — wrist to shoulder. And now rub your legs equally as vigorously reminding yourself that you are here and present. Let\'s have a little stretch out — just reaching out and up to the sky — like you are yawning with your whole body. Now stand up and swap seats with your partner. Sit back down in your partner\'s chair."' }
+        ],
+        prompt: 'The seat-swap at the end — is that the same inject as the somatic work before it, or a different one?'
+      },
+      {
+        id: '012-01-sup',
+        ref: '012_01_SUP',
+        chapter: 'Check in 4 — supervisor only',
+        layer: 'sup',
+        streams: [
+          { label: 'Supervisor narration', cls: 'stream-sup', text: '"As the participants swap seats you can stand up and have a little wiggle around and shake out any stiffness before sitting back down."' }
+        ],
+        prompt: 'What is the supervisor stream\'s relationship to the participant stream? Is it a separate inject type, or the same one directed differently?'
+      },
+    ]
+  },
+  {
+    heading: 'Chapter 013 — full body listening and fake listening',
+    beats: [
+      {
+        id: '013-01',
+        ref: '013_01_STU',
+        chapter: 'Theory framing — both players',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"A key part of empathy is listening. Sometimes we think we are listening but actually we are fooling ourselves and others all the time. It\'s easy to fake listen. To be listened to is a striking experience partly because it is so rare. The real problem with fake listening is that patients know it; they can feel it. It isn\'t authentic, it isn\'t engaged, and it doesn\'t build trust with your patient… Fake listening is where our awareness is primarily on ourselves and our self-talk: our own thoughts, feelings, judgments and conclusions. We can appear to be listening and even make encouraging noises — but our internal dialogue is quite different. When we seek to engage and empathise with a patient we need to move beyond our own thoughts and needs. Let\'s try some fake listening."' }
+        ],
+        prompt: 'The closing line "Let\'s try some fake listening" — what kind of inject is it? Does it change the function of everything before it?'
+      },
+      {
+        id: '013-02-sup',
+        ref: '013_02_SUP',
+        chapter: 'Advance briefing — supervisor only',
+        layer: 'sup',
+        streams: [
+          { label: 'Supervisor narration', cls: 'stream-sup', text: '"In a moment the participants will start talking about their opinion on the role of listening in their profession; but as one of them speaks the other will be hearing a constant inner monologue. They will have to split their attention between what is going on in their internal world and what is happening with the person in front of them."' }
+        ],
+        prompt: 'The supervisor is being briefed one beat before the participants act. Does that make this inject the same type as a standard supervisor handover, or something distinct?'
+      },
+      {
+        id: '013-03',
+        ref: '013_03_STU_A / 013_03_STU_B',
+        chapter: 'Fake listening — simultaneous-paired',
+        layer: 'split',
+        streams: [
+          { label: 'Player A hears', cls: '', text: '"In a moment your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue (which we will provide). Do not interrupt your partner but instead try to convince them that you are listening. Ending in 5…4…3…2…1"' },
+          { label: 'Player B hears', cls: '', text: '"When prompted start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"' },
+        ],
+        prompt: 'A and B are receiving fundamentally different instructions at the same beat. How do you tag that? One annotation or two?'
+      },
+      {
+        id: '013-qim',
+        ref: '013_QIM',
+        chapter: 'Inner monologue layer — Player A only',
+        layer: 'qim',
+        streams: [
+          { label: 'Player A only — runs continuously underneath 013_03 and 013_04', cls: 'stream-qim', text: '"How much longer do I have to listen to this? I wonder if I can get someone else to take over? Did I turn my phone off? How shall I respond to that email? Does Amazon deliver to the hospital? The vegetables in my fridge… they still ok to eat? Have I got to make an appointment or will they call me? Did I call back like I said I would? Why did I go to bed so late last night? Have I had enough water today? I think I need a holiday. I wonder if I can go home early today? Have I filled out all the right forms? What shall I do this weekend? How many shifts am I on this week? I wonder if my manager got my email. Did I confirm that appointment? Do I need to check how much tax I\'m paying? What time do I start tomorrow? Did I take the laundry out of the dryer? What time does the post office close?"' }
+        ],
+        prompt: 'This is listed in the script as a separate section, not a numbered beat. Does it feel like an inject? How would you classify it structurally — is it a beat, a layer, or something else?'
+      },
+      {
+        id: '013-04',
+        ref: '013_04_STU_A / 013_04_STU_B',
+        chapter: 'Fake listening — roles inverted',
+        layer: 'split',
+        streams: [
+          { label: 'Player A hears', cls: '', text: '"Now you can respond to your partner and start to tell your partner your opinion on the role of listening in your profession — try to work in as much detail as you can from past experiences and be sure to keep talking until you hear the signal to stop. GO! Finish your sentence. Ending in 5…4…3…2…1"' },
+          { label: 'Player B hears', cls: '', text: '"Now your partner will start talking and I want you to only listen to your partner whilst also hearing an internal monologue which we will provide. Do not interrupt your partner but instead try to convince them that you are really listening."' },
+        ],
+        prompt: 'Structurally identical to 013_03 with roles swapped. Does that make it the same inject, or a different one?'
+      },
+      {
+        id: '013-05',
+        ref: '013_05_STU',
+        chapter: 'Debrief — fake listening',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"Debrief. Discuss with your partner how you found having that split attention? Did you zone out completely? Were you struggling to keep connection? Take a few minutes to talk to your partner and discuss the experience. Two minutes starting now. Go! Bring your discussion to a close. Your debrief is ending in 5…4…3…2…1"' }
+        ],
+        prompt: 'The countdown (5…4…3…2…1) closes the debrief. Is that part of the same inject, or a separate one?'
+      },
+    ]
+  },
+  {
+    heading: 'Chapter 014 — real listening',
+    beats: [
+      {
+        id: '014-01',
+        ref: '014_01_STU',
+        chapter: 'Theory — full body listening defined',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"Real listening, also known as full body listening, is listening without our own thoughts or personal agenda intruding. We notice what the other person says and how they say it — also picking up on what is unsaid. It includes non-verbal cues: leaning forward and making eye contact, for example. In full body listening all of our awareness is intently on the other person: their words, tone of voice, pauses, facial expressions, posture, emotions, energy and rhythm. We notice what lights them up and what deflates them. Our focus is so fixed on them that our own mental chatter vanishes and we speak with spontaneity. We also notice how our responses impact the other person."' }
+        ],
+        prompt: 'This chapter sits between the fake-listening exercise and the full-body listening practice. What work is it doing structurally? Is it the same kind of theory inject as 013_01?'
+      },
+    ]
+  },
+  {
+    heading: 'Chapter 015 — check in 5',
+    beats: [
+      {
+        id: '015-01',
+        ref: '015_01_STU',
+        chapter: 'Check in 5',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"It\'s been a lot — let\'s do a check in. Feel your hands by rubbing them together. Rub your arms vigorously. Shrug your shoulders up and down a couple of times. Feel your feet fully on the floor and wiggle your toes. And now push down through your sit bones and lengthen your spine towards the ceiling. Lift your arms up to the sky and do a big stretch. Place your hands firmly back on your legs and feel that you are still here and you are still solid."' }
+        ],
+        prompt: 'This is the 5th of 6 check-ins. "It\'s been a lot" opens it. Does that opening phrase change the inject type, or just the tone?'
+      },
+    ]
+  },
+  {
+    heading: 'Chapter 016 — practice good listening',
+    beats: [
+      {
+        id: '016-01',
+        ref: '016_01_STU_A / 016_01_STU_B',
+        chapter: 'Full-body listening — A attends, B recalls',
+        layer: 'split',
+        streams: [
+          { label: 'Player A hears', cls: '', text: '"I want you to imagine your whole body is an ear and you are going to listen with your whole body. Remember you cannot be doing anything else if you are truly listening to someone. Notice the change in the way you are listening and be sure to focus on everything they say. Afterwards you will need to repeat it back to them. Ask your partner to tell you about a time where they were not listened to. Go 5, 4, 3, 2, 1"' },
+          { label: 'Player B hears', cls: '', text: '"Think about a time in your life when you felt you were not being heard, where you were not being listened to. When asked, tell your partner about this time in your life. Try to talk about as many details that you can remember. Try to recall who was involved and what the power dynamics were in the situation and the consequences for you. But most importantly try to remember how it made you feel, and explain this to your partner. Keep talking until you hear the signal to stop. Bring your sentence to an end. 5, 4, 3, 2, 1"' },
+        ],
+        prompt: 'Compare this beat structurally to 013_03. Same slot, different injects. Does that feel like the same pattern to you?'
+      },
+      {
+        id: '016-02',
+        ref: '016_02_STU_A / 016_02_STU_B',
+        chapter: 'Repeat-back and observation',
+        layer: 'split',
+        streams: [
+          { label: 'Player A hears', cls: '', text: '"Now you are going to repeat as much as you remember back to your partner. Start your sentence with the phrase \'what I heard you say was…\' and then repeat back to them everything you heard them say. Ready? \'What I heard you say was…\'. Bring your sentence to an end. 5, 4, 3, 2, 1"' },
+          { label: 'Player B hears', cls: '', text: '"And now listen to your partner repeat what they heard you say. Your partner will repeat what they heard back to you. And you\'ll notice the level of detail they managed to capture. Observe how much their attentiveness allowed you to have space to be heard. 5, 4, 3, 2, 1"' },
+        ],
+        prompt: 'The scripted opening phrase "what I heard you say was…" — is that a separate inject type (G6 exact-line), or just part of the repeat-back inject (E8)?'
+      },
+      {
+        id: '016-03-04',
+        ref: '016_03 / 016_04',
+        chapter: 'Role swap — B speaks, A listens',
+        layer: 'split',
+        streams: [
+          { label: 'Note', cls: '', text: '016_03 and 016_04 are the structural mirror of 016_01 and 016_02 with A and B roles swapped. B now recalls a time of not being heard (D3) and A now full-body listens (E6), then B repeat-backs (E8) while A observes (G10).' }
+        ],
+        prompt: 'Is this a new set of injects, or is G22 (swap-role) the only annotation needed, with the rest implied? How granular should the annotation be?'
+      },
+      {
+        id: '016-05',
+        ref: '016_05_STU',
+        chapter: 'Final debrief',
+        layer: 'shared',
+        streams: [
+          { label: 'Script', cls: '', text: '"Debrief. Take a few moments to discuss the experience of practising active listening. How did you find it helped you connect to one another? Were you able to focus on each other? Did you remember the important elements? 2 minutes starting now. Go! Bring your discussion to a close. Your Debrief is ending in 5-4-3-2-1"' }
+        ],
+        prompt: 'Final beat. Use the notes field here for any observations about the annotation exercise itself — gaps in the taxonomy, ambiguous cases, things that surprised you, or structural patterns not named in the catalogue.'
+      },
+    ]
+  },
+];
+
+// ═══════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════
+
+function buildInjectOptions() {
+  let html = '';
+  INJECT_FAMILIES.forEach(fam => {
+    html += `<div class="family-divider">${fam.label}</div>`;
+    fam.tags.forEach(tag => {
+      html += `<button class="tag-btn ${fam.cls}" data-val="${tag}">${tag}</button>`;
     });
   });
+  return html;
+}
 
-  document.querySelectorAll('textarea').forEach(ta => {
-    ta.addEventListener('input', () => checkComplete(ta.closest('.beat-card')));
+function buildModeOptions() {
+  return MODE_TAGS.map(m =>
+    `<button class="tag-btn tag-mode-btn" data-val="${m.val}">${m.val} — ${m.desc}</button>`
+  ).join('');
+}
+
+function buildTimingOptions() {
+  return TIMING_TAGS.map(t =>
+    `<button class="tag-btn tag-timing-btn" data-val="${t}">${t}</button>`
+  ).join('');
+}
+
+function buildImpactOptions() {
+  return IMPACT_TAGS.map(i =>
+    `<button class="tag-btn tag-impact-btn" data-val="${i}">${i}</button>`
+  ).join('');
+}
+
+function layerPillClass(layer) {
+  return { shared: 'layer-shared', split: 'layer-split', sup: 'layer-sup', qim: 'layer-qim' }[layer] || 'layer-shared';
+}
+function layerPillLabel(layer) {
+  return { shared: 'Shared audio', split: 'Split audio', sup: 'Supervisor stream', qim: 'QIM layer' }[layer] || 'Shared audio';
+}
+
+function buildStreams(streams) {
+  if (streams.length === 1) {
+    const s = streams[0];
+    return `<div class="stream ${s.cls}">
+      <div class="stream-label">${s.label}</div>
+      <div class="stream-text">${s.text}</div>
+    </div>`;
+  }
+  return `<div class="stream-grid">${streams.map(s => `
+    <div class="stream ${s.cls}">
+      <div class="stream-label">${s.label}</div>
+      <div class="stream-text">${s.text}</div>
+    </div>`).join('')}</div>`;
+}
+
+const container = document.getElementById('beats-container');
+const injectHTML  = buildInjectOptions();
+const modeHTML    = buildModeOptions();
+const timingHTML  = buildTimingOptions();
+const impactHTML  = buildImpactOptions();
+
+SECTIONS.forEach(section => {
+  const secEl = document.createElement('div');
+  secEl.innerHTML = `<div class="section-heading">${section.heading}</div>`;
+  container.appendChild(secEl);
+
+  section.beats.forEach(beat => {
+    const card = document.createElement('div');
+    card.className = 'beat-card';
+    card.dataset.beat = beat.id;
+
+    card.innerHTML = `
+      <div class="beat-header">
+        <span class="beat-ref">${beat.ref}</span>
+        <span class="beat-chapter">${beat.chapter}</span>
+        <span class="layer-pill ${layerPillClass(beat.layer)}">${layerPillLabel(beat.layer)}</span>
+        <span class="complete-tick">✓ annotated</span>
+      </div>
+      <div class="stream-block">${buildStreams(beat.streams)}</div>
+      <div class="annotation-area">
+        <h3>Your annotation</h3>
+        <div class="dimension">
+          <div class="dimension-label">Inject type — full catalogue, select all that apply</div>
+          <div class="tag-options" data-dim="inject">${injectHTML}</div>
+        </div>
+        <div class="dimension">
+          <div class="dimension-label">Mode tag — what does it instruct the player to do?</div>
+          <div class="tag-options" data-dim="mode">${modeHTML}</div>
+        </div>
+        <div class="dimension">
+          <div class="dimension-label">Timing — how does it enter the scene?</div>
+          <div class="tag-options" data-dim="timing">${timingHTML}</div>
+        </div>
+        <div class="dimension">
+          <div class="dimension-label">Relational impact — what does it do to the participant?</div>
+          <div class="tag-options" data-dim="impact">${impactHTML}</div>
+        </div>
+        <div class="notes-wrap">
+          <div class="dimension-label" style="margin-bottom:0.4rem">Observations</div>
+          <textarea placeholder="${beat.prompt}"></textarea>
+        </div>
+      </div>`;
+
+    container.appendChild(card);
   });
+});
 
-  function getCardData(card) {
-    const ref = card.querySelector('.beat-ref').textContent.trim();
-    const chapter = card.querySelector('.beat-chapter').textContent.trim();
-    const selected = {};
-    card.querySelectorAll('[data-dim]').forEach(group => {
-      const dim = group.dataset.dim;
-      const vals = Array.from(group.querySelectorAll('.selected')).map(b => b.dataset.val);
-      if (vals.length) selected[dim] = vals;
-    });
-    const notes = Array.from(card.querySelectorAll('textarea')).map(t => t.value.trim()).filter(Boolean);
-    return { ref, chapter, selected, notes };
-  }
+// ═══════════════════════════════════════════════
+// INTERACTION
+// ═══════════════════════════════════════════════
 
-  function generateSummary() {
-    const annotator = document.getElementById('annotator-name').value.trim() || 'Anonymous';
-    const date = document.getElementById('date-out').textContent;
-    let out = `SIMFONIK ANNOTATION — HUMAN CONTROL\n`;
-    out += `Annotator: ${annotator}\n`;
-    out += `Date: ${date}\n`;
-    out += `Chapters: 012–016, HP Part 1\n`;
-    out += `${'─'.repeat(60)}\n\n`;
+document.getElementById('date-out').textContent = new Date().toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric'
+});
 
-    document.querySelectorAll('.beat-card').forEach(card => {
-      const d = getCardData(card);
-      out += `${d.ref}\n${d.chapter}\n`;
-      if (d.selected.inject) out += `  Inject type:  ${d.selected.inject.join(' · ')}\n`;
-      if (d.selected.mode)   out += `  Mode tag:     ${d.selected.mode.join(' · ')}\n`;
-      if (d.selected.timing) out += `  Timing:       ${d.selected.timing.join(' · ')}\n`;
-      if (d.selected.impact) out += `  Impact:       ${d.selected.impact.join(' · ')}\n`;
-      if (d.notes.length)    out += `  Notes:        ${d.notes.join(' | ')}\n`;
-      out += '\n';
-    });
+const TOTAL_BEATS = document.querySelectorAll('.beat-card').length;
+document.getElementById('progress-text').textContent = `0 / ${TOTAL_BEATS} beats annotated`;
 
-    const el = document.getElementById('summary-out');
-    el.textContent = out;
-    el.style.display = 'block';
-  }
+function updateProgress() {
+  const annotated = document.querySelectorAll('.beat-card.complete').length;
+  const pct = Math.round((annotated / TOTAL_BEATS) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${annotated} / ${TOTAL_BEATS} beats annotated`;
+}
 
-  function copyToClipboard() {
-    generateSummary();
-    const text = document.getElementById('summary-out').textContent;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard.'));
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      alert('Copied to clipboard.');
-    }
-  }
-
+function checkComplete(card) {
+  const hasTags  = card.querySelector('.tag-btn.selected') !== null;
+  const hasNotes = Array.from(card.querySelectorAll('textarea')).some(t => t.value.trim().length > 0);
+  card.classList.toggle('complete', hasTags || hasNotes);
   updateProgress();
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.tag-btn');
+  if (!btn) return;
+  btn.classList.toggle('selected');
+  checkComplete(btn.closest('.beat-card'));
+});
+
+document.addEventListener('input', e => {
+  if (e.target.tagName === 'TEXTAREA') checkComplete(e.target.closest('.beat-card'));
+});
+
+function getCardData(card) {
+  const ref     = card.querySelector('.beat-ref').textContent.trim();
+  const chapter = card.querySelector('.beat-chapter').textContent.trim();
+  const selected = {};
+  card.querySelectorAll('[data-dim]').forEach(group => {
+    const dim  = group.dataset.dim;
+    const vals = Array.from(group.querySelectorAll('.selected')).map(b => b.dataset.val);
+    if (vals.length) selected[dim] = vals;
+  });
+  const notes = Array.from(card.querySelectorAll('textarea')).map(t => t.value.trim()).filter(Boolean);
+  return { ref, chapter, selected, notes };
+}
+
+function generateSummary() {
+  const annotator = document.getElementById('annotator-name').value.trim() || 'Anonymous';
+  const date      = document.getElementById('date-out').textContent;
+  let out = `SIMFONIK ANNOTATION — HUMAN CONTROL\nAnnotator: ${annotator}\nDate: ${date}\nChapters: 012–016, HP Part 1\n${'─'.repeat(60)}\n\n`;
+
+  document.querySelectorAll('.beat-card').forEach(card => {
+    const d = getCardData(card);
+    out += `${d.ref}\n${d.chapter}\n`;
+    if (d.selected.inject) out += `  Inject type:  ${d.selected.inject.join(' · ')}\n`;
+    if (d.selected.mode)   out += `  Mode tag:     ${d.selected.mode.join(' · ')}\n`;
+    if (d.selected.timing) out += `  Timing:       ${d.selected.timing.join(' · ')}\n`;
+    if (d.selected.impact) out += `  Impact:       ${d.selected.impact.join(' · ')}\n`;
+    if (d.notes.length)    out += `  Notes:        ${d.notes.join(' | ')}\n`;
+    out += '\n';
+  });
+
+  const el = document.getElementById('summary-out');
+  el.textContent = out;
+  el.style.display = 'block';
+}
+
+function copyToClipboard() {
+  generateSummary();
+  const text = document.getElementById('summary-out').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard.'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('Copied to clipboard.');
+  }
+}
+
+updateProgress();
 </script>
 </body>
 </html>
