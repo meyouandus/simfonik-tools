@@ -262,28 +262,28 @@ body {
 .tag-btn:hover { opacity: 0.8; }
 
 .tag-mode-btn          { background: #f0effd; color: #7F77DD; border-color: #c9c6f5; }
-.tag-mode-btn.selected { background: #EEEDFE; color: #3C3489; border-color: #7F77DD; }
+.tag-mode-btn.selected { background: #7F77DD; color: #fff; border-color: #7F77DD; }
 
 .tag-inject-a-btn          { background: #f4f4f0; color: #5F5E5A; border-color: #D3D1C7; }
-.tag-inject-a-btn.selected { background: #F1EFE8; color: #2C2C2A; border-color: #888780; }
+.tag-inject-a-btn.selected { background: #888780; color: #fff; border-color: #888780; }
 .tag-inject-b-btn          { background: #f0faf5; color: #1D9E75; border-color: #9FE1CB; }
-.tag-inject-b-btn.selected { background: #E1F5EE; color: #085041; border-color: #1D9E75; }
+.tag-inject-b-btn.selected { background: #1D9E75; color: #fff; border-color: #1D9E75; }
 .tag-inject-c-btn          { background: #eef5fb; color: #378ADD; border-color: #B5D4F4; }
-.tag-inject-c-btn.selected { background: #E6F1FB; color: #185FA5; border-color: #378ADD; }
+.tag-inject-c-btn.selected { background: #378ADD; color: #fff; border-color: #378ADD; }
 .tag-inject-d-btn          { background: #fdf0ec; color: #D85A30; border-color: #F0997B; }
-.tag-inject-d-btn.selected { background: #FAECE7; color: #712B13; border-color: #D85A30; }
+.tag-inject-d-btn.selected { background: #D85A30; color: #fff; border-color: #D85A30; }
 .tag-inject-e-btn          { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
-.tag-inject-e-btn.selected { background: #FAEEDA; color: #412402; border-color: #BA7517; }
+.tag-inject-e-btn.selected { background: #BA7517; color: #fff; border-color: #BA7517; }
 .tag-inject-f-btn          { background: #fdeef3; color: #D4537E; border-color: #ED93B1; }
-.tag-inject-f-btn.selected { background: #FBEAF0; color: #4B1528; border-color: #D4537E; }
+.tag-inject-f-btn.selected { background: #D4537E; color: #fff; border-color: #D4537E; }
 .tag-inject-g-btn          { background: #edfaf4; color: #639922; border-color: #C0DD97; }
-.tag-inject-g-btn.selected { background: #EAF3DE; color: #173404; border-color: #639922; }
+.tag-inject-g-btn.selected { background: #639922; color: #fff; border-color: #639922; }
 
 .tag-timing-btn          { background: #fdf5e8; color: #BA7517; border-color: #FAC775; }
-.tag-timing-btn.selected { background: #FAEEDA; color: #412402; border-color: #BA7517; }
+.tag-timing-btn.selected { background: #BA7517; color: #fff; border-color: #BA7517; }
 
 .tag-impact-btn          { background: #fdf0ec; color: #993C1D; border-color: #F5C4B3; }
-.tag-impact-btn.selected { background: #FAECE7; color: #4A1B0C; border-color: #D85A30; }
+.tag-impact-btn.selected { background: #993C1D; color: #fff; border-color: #993C1D; }
 
 .family-divider {
   font-family: 'Courier New', monospace;
@@ -856,6 +856,11 @@ document.addEventListener('click', e => {
   const btn = e.target.closest('.tag-btn');
   if (!btn) return;
   btn.classList.toggle('selected');
+  if (btn.classList.contains('selected')) {
+    btn.textContent = '✓ ' + btn.textContent;
+  } else {
+    btn.textContent = btn.textContent.replace(/^✓\s*/, '');
+  }
   checkComplete(btn.closest('.beat-card'));
 });
 
