@@ -1,128 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIMFONIK Annotation — Human Control (Ch 004–005)</title>
 <style>
-  :root{
-    --ink:#1b1b1f; --muted:#6b6b76; --line:#e4e4ea; --bg:#faf9f7;
-    --card:#ffffff; --accent:#3a6ea5; --accent-soft:#eef3f9;
-    --script:#f4f2ee; --chip:#f0f0f3;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-light: #7a7a74;
+    --ink-faint: #b0b0a8;
+    --surface: #fafaf8;
+    --surface-raised: #ffffff;
+    --border: #e0e0d8;
+    --border-strong: #c8c8c0;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-  header{padding:32px 24px 20px;max-width:920px;margin:0 auto;}
-  h1{font-size:22px;margin:0 0 4px;}
-  .sub{color:var(--muted);font-size:14px;margin:0 0 18px;}
-  .how{background:var(--accent-soft);border:1px solid #dbe6f2;border-radius:10px;
-    padding:14px 16px;font-size:13.5px;color:#33455a;margin-bottom:18px;}
-  .how b{color:var(--accent);}
-  .annot{display:flex;gap:10px;align-items:center;margin-bottom:8px;}
-  .annot input{flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;}
-  main{max-width:920px;margin:0 auto;padding:0 24px 80px;}
-  .beat{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:20px 22px;margin:18px 0;box-shadow:0 1px 2px rgba(0,0,0,.03);}
-  .beat-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
-  .bid{font-weight:700;font-size:15px;letter-spacing:.02em;}
-  .btitle{color:var(--muted);font-size:14px;}
-  .stream{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;
-    color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:20px;}
-  .script{background:var(--script);border-radius:10px;padding:14px 16px;margin:12px 0 16px;
-    font-size:14px;white-space:pre-wrap;color:#34343c;}
-  .dim{margin:14px 0;}
-  .dim > .label{font-weight:600;font-size:13px;margin-bottom:7px;display:block;}
-  .fam{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
-    margin:9px 0 4px;}
-  .opts{display:flex;flex-wrap:wrap;gap:6px 8px;}
-  label.opt{display:inline-flex;align-items:center;gap:6px;background:var(--chip);
-    border:1px solid transparent;border-radius:20px;padding:4px 11px;font-size:12.5px;cursor:pointer;
-    user-select:none;}
-  label.opt:hover{border-color:#cdd6e0;}
-  label.opt input{margin:0;}
-  label.opt:has(input:checked){background:var(--accent-soft);border-color:var(--accent);color:#23476b;font-weight:600;}
-  textarea{width:100%;min-height:60px;padding:9px 11px;border:1px solid var(--line);
-    border-radius:8px;font:14px/1.5 inherit;resize:vertical;}
-  .bar{position:sticky;bottom:0;background:rgba(250,249,247,.95);backdrop-filter:blur(6px);
-    border-top:1px solid var(--line);padding:12px 24px;display:flex;gap:10px;justify-content:center;align-items:center;}
-  button{background:var(--accent);color:#fff;border:0;border-radius:9px;padding:10px 18px;
-    font-size:14px;font-weight:600;cursor:pointer;}
-  button.sec{background:#fff;color:var(--accent);border:1px solid var(--accent);}
-  #out{max-width:920px;margin:0 auto;padding:0 24px;}
-  pre{background:#1b1b1f;color:#e8e8ec;border-radius:12px;padding:18px;overflow:auto;
-    font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;}
-  .note{color:var(--muted);font-size:12.5px;}
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--surface);
+  }
+
+  .page-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem 5rem;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .doc-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .doc-header .subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .doc-header .intro {
+    font-size: 14px;
+    color: var(--ink-mid);
+    max-width: 720px;
+    line-height: 1.65;
+  }
+  .doc-header .intro strong { color: var(--ink); }
+
+  /* ── Annotator field ── */
+  .annot {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-mid);
+  }
+  .annot input {
+    font-family: 'Georgia', serif; font-size: 14px; text-transform: none; letter-spacing: 0;
+    padding: 5px 10px; border: 1px solid var(--border-strong); border-radius: 5px; min-width: 240px;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    color: var(--ink-mid);
+    font-family: 'Courier New', monospace;
+  }
+  .legend-swatch { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── Section heading ── */
+  .section-heading {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-light);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Chapter block ── */
+  .chapter {
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: var(--surface-raised);
+  }
+  .ch-header {
+    background: #f4f4f0;
+    border-bottom: 1px solid var(--border-strong);
+    padding: 0.65rem 1.25rem;
+    display: flex; align-items: baseline; gap: 1rem;
+  }
+  .ch-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .ch-ref { font-family: 'Courier New', monospace; font-size: 11px; color: var(--ink-light); }
+
+  /* ── Layer banner ── */
+  .layer-banner {
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 0.28rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+  .layer-shared { background: #EAF3DE; color: #3B6D11; }
+  .layer-sup    { background: #F1EFE8; color: #5F5E5A; }
+
+  /* ── Beat ── */
+  .beat { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .beat:last-child { border-bottom: none; }
+  .beat-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px; color: var(--ink-light);
+    margin-bottom: 0.65rem; font-weight: 700; letter-spacing: 0.02em;
+  }
+
+  /* ── Stream ── */
+  .stream {
+    background: #f7f7f4; border: 1px solid var(--border);
+    border-radius: 5px; padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+  }
+  .stream-sup { background: #f4f4f0; border-left: 3px solid var(--border-strong); }
+  .stream-label {
+    font-family: 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 0.4rem; font-weight: 700;
+  }
+  .stream-text { font-size: 13.5px; color: var(--ink); line-height: 1.65; font-style: italic; white-space: pre-wrap; }
+
+  /* ── Selection groups ── */
+  .dim { margin-top: 0.85rem; }
+  .dim-label {
+    font-family: 'Courier New', monospace; font-size: 9.5px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-light); font-weight: 700; margin-bottom: 0.4rem;
+  }
+  .fam-label {
+    font-family: 'Courier New', monospace; font-size: 9px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--ink-faint); margin: 0.5rem 0 0.3rem;
+  }
+  .opts { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  /* Selectable chips — colour-coded by dimension, matching the compiled annotation */
+  label.opt {
+    font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700;
+    padding: 2px 9px 2px 7px; border-radius: 20px; line-height: 1.6;
+    display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    border: 1px solid transparent; user-select: none; white-space: nowrap;
+    background: #f3f3ef; color: var(--ink-faint);
+  }
+  label.opt input { margin: 0; width: 11px; height: 11px; flex-shrink: 0; accent-color: currentColor; }
+  label.opt:hover { border-color: var(--border-strong); }
+
+  /* unselected = faint tint of the dimension colour; selected = full pastel fill */
+  label.inj  { background:#f2f9f6; color:#4f9583; }
+  label.inj:has(input:checked)  { background:#E1F5EE; color:#0F6E56; border-color:#1D9E75; }
+  label.mode { background:#f4f3fd; color:#7a74c4; }
+  label.mode:has(input:checked) { background:#EEEDFE; color:#3C3489; border-color:#7F77DD; }
+  label.tim  { background:#fbf6ec; color:#a98a55; }
+  label.tim:has(input:checked)  { background:#FAEEDA; color:#633806; border-color:#BA7517; }
+  label.imp  { background:#fbf1ee; color:#b67a64; }
+  label.imp:has(input:checked)  { background:#FAECE7; color:#712B13; border-color:#D85A30; }
+
+  /* ── Notes ── */
+  .notes-wrap { margin-top: 0.85rem; }
+  textarea {
+    width: 100%; min-height: 56px; padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border-strong); border-radius: 5px;
+    font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; color: var(--ink); resize: vertical;
+    background: #fffdf8;
+  }
+
+  /* ── Action bar ── */
+  .bar {
+    position: sticky; bottom: 0; margin-top: 2rem;
+    background: rgba(250,250,248,0.95); backdrop-filter: blur(6px);
+    border-top: 1px solid var(--border-strong); padding: 0.9rem 0;
+    display: flex; gap: 0.6rem; align-items: center; justify-content: center;
+  }
+  button {
+    font-family: 'Courier New', monospace; font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 0.6rem 1.1rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--ink);
+    background: var(--ink); color: #fff;
+  }
+  button.sec { background: #fff; color: var(--ink); }
+  .bar .hint { font-family: 'Courier New', monospace; font-size: 10.5px; color: var(--ink-faint); }
+
+  pre {
+    background: #1a1a18; color: #e8e8e2; border-radius: 8px; padding: 1.25rem;
+    overflow: auto; font: 12px/1.55 'Courier New', monospace; white-space: pre-wrap;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 640px) { .page-wrap { padding: 1.5rem 1rem 3rem; } }
 </style>
 </head>
 <body>
-<header>
-  <h1>SIMFONIK Script Annotation — Human Control</h1>
-  <p class="sub">Healthcare Professional · Part 1 · Chapters 004–005 · Annotate independently, then export and send back</p>
-  <div class="how">
-    <b>How to use this sheet.</b> Read each script beat carefully. Use the tags below each beat to annotate it across four dimensions: <b>inject type</b> (what the inject is doing), <b>mode</b> (what it instructs the player to do), <b>timing</b> (how it enters the scene), and <b>relational impact</b> (what it does to the participant). Select as many as apply in each dimension. Add observations in the notes field. Work from your own judgement — there are no right answers. When done, click <b>Export annotations</b> at the bottom, copy the text, and send it back.
-  </div>
-  <div class="annot">
-    <label for="annotator" style="font-weight:600;font-size:13px;">Annotator:</label>
-    <input id="annotator" placeholder="Your name" value="Jorge Lopes Ramos">
-  </div>
-</header>
-<main id="beats"></main>
+<div class="page-wrap">
 
-<div id="out"></div>
+  <div class="doc-header">
+    <h1>SIMFONIK Script Annotation — Human Control</h1>
+    <div class="subtitle">Healthcare Professional Part 1 · Chapters 004–005 · Pain-recall foundations</div>
+    <p class="intro">Annotate each beat independently against the inject catalogue (v4). For every beat, select the tags that apply across four dimensions — <strong>inject type</strong> (what the inject is doing), <strong>mode</strong> (what it instructs the player to do), <strong>timing</strong> (how it enters the scene), and <strong>relational impact</strong> (what it does to the participant) — then add any observations in the notes field. Work from your own judgement; select as many as apply. When finished, press <strong>Export</strong> at the bottom, copy the text, and send it back.</p>
+    <div class="annot">Annotator: <input id="annotator" value="Jorge Lopes Ramos"></div>
+  </div>
 
-<div class="bar">
-  <button onclick="exportAll()">Export annotations</button>
-  <button class="sec" onclick="copyOut()">Copy to clipboard</button>
-  <span class="note">Exports in the same format as the previous round.</span>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#1D9E75"></span>Inject type (catalogue ref)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#7F77DD"></span>Mode tag</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#BA7517"></span>Timing pattern</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#D85A30"></span>Relational impact</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#3B6D11"></span>Shared audio (both players)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#5F5E5A"></span>Supervisor stream only</div>
+  </div>
+
+  <div id="beats"></div>
+
+  <div class="bar">
+    <button onclick="exportAll()">Export annotations</button>
+    <button class="sec" onclick="copyOut()">Copy to clipboard</button>
+    <span class="hint">Exports in the same format as the previous round</span>
+  </div>
+  <div id="out"></div>
+
+  <div class="footer" style="font-family:'Courier New',monospace;font-size:10.5px;color:var(--ink-faint);text-align:center;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1.5rem;">
+    SIMFONIK / SIM MAKER · Human control sheet · Chapters 004–005 HP Part 1
+  </div>
+
 </div>
 
 <script>
 const INJECT = {
-  "A — Session management":[
-    ["A1","Welcome / Orientation"],["A2","Professional identity framing"],["A3","Psychological safety"],
-    ["A4","Participation rule"],["A5","Platform procedural"],["A6","End-of-experience"]],
-  "B — Safety & regulation":[
-    ["B1","Safety scan"],["B2","Environmental orientation"],["B3","Somatic grounding"],
-    ["B4","Breath regulation"],["B5","Body wake-up"],["B6","Co-regulation"],
-    ["B7","Consent / Boundary"],["B8","Safety boundary / opt-down"]],
-  "C — Relational setup":[
-    ["C1","Seating / Spatial setup"],["C2","Pair acknowledgement"],["C3","Role allocation"],
-    ["C4","Patient / Nurse / Context"],["C5","Proximity"]],
-  "D — Reflective & cognitive":[
-    ["D1","Self-reflection"],["D2","Memory recall"],["D3","Pain recall"],
-    ["D4","Anti-assumption"],["D5","Ethical"],["D6","Internal distraction"]],
-  "E — Attention & observation":[
-    ["E1","Partner observation"],["E2","Emotional inference"],["E3","Soft focus / Gaze"],
-    ["E4","Eye-contact training"],["E5","Listening posture"],["E6","Full-body listening"],
-    ["E7","Fake-listening"],["E8","Repeat-back"],["E9","Observational"]],
-  "F — Embodied & relational":[
-    ["F1","Face training"],["F2","Mirroring"],["F3","Mimicry warning"],["F4","Therapeutic touch"]],
-  "G — Voice, dialogue & roleplay":[
-    ["G1","Vocal prosody theory"],["G2","Vocal warm-up"],["G3","Meet-and-match voice"],
-    ["G4","Intensity-level"],["G5","Emotional validation"],["G6","Exact-line-to-repeat"],
-    ["G7","Own-words speech"],["G8","Ask-a-question"],["G9","Response instruction"],
-    ["G10","Observe-and-wait"],["G11","Designed silence"],["G12","Role-defining"],
-    ["G13","Institutional procedural"],["G14","Disruptive"],["G15","Repetitive"],
-    ["G16","Scenario handover"],["G17","Improvisation release"],["G18","One-minute warning"],
-    ["G19","Roleplay closure"],["G20","Thank-your-partner"],["G21","Peer feedback"],
-    ["G22","Swap-role"],["G23","Shared-theory"],["G24","Cue / Signal"],
-    ["G25","Calibration / Rehearsal"],["G26","Discussion / Countdown"],["G27","Supervisor / Next-step"]]
+  "A — Session management":[["A1","Welcome / Orientation"],["A2","Professional identity framing"],["A3","Psychological safety"],["A4","Participation rule"],["A5","Platform procedural"],["A6","End-of-experience"]],
+  "B — Safety & regulation":[["B1","Safety scan"],["B2","Environmental orientation"],["B3","Somatic grounding"],["B4","Breath regulation"],["B5","Body wake-up"],["B6","Co-regulation"],["B7","Consent / Boundary"],["B8","Safety boundary / opt-down"]],
+  "C — Relational setup":[["C1","Seating / Spatial setup"],["C2","Pair acknowledgement"],["C3","Role allocation"],["C4","Patient / Nurse / Context"],["C5","Proximity"]],
+  "D — Reflective & cognitive":[["D1","Self-reflection"],["D2","Memory recall"],["D3","Pain recall"],["D4","Anti-assumption"],["D5","Ethical"],["D6","Internal distraction"]],
+  "E — Attention & observation":[["E1","Partner observation"],["E2","Emotional inference"],["E3","Soft focus / Gaze"],["E4","Eye-contact training"],["E5","Listening posture"],["E6","Full-body listening"],["E7","Fake-listening"],["E8","Repeat-back"],["E9","Observational"]],
+  "F — Embodied & relational":[["F1","Face training"],["F2","Mirroring"],["F3","Mimicry warning"],["F4","Therapeutic touch"]],
+  "G — Voice, dialogue & roleplay":[["G1","Vocal prosody theory"],["G2","Vocal warm-up"],["G3","Meet-and-match voice"],["G4","Intensity-level"],["G5","Emotional validation"],["G6","Exact-line-to-repeat"],["G7","Own-words speech"],["G8","Ask-a-question"],["G9","Response instruction"],["G10","Observe-and-wait"],["G11","Designed silence"],["G12","Role-defining"],["G13","Institutional procedural"],["G14","Disruptive"],["G15","Repetitive"],["G16","Scenario handover"],["G17","Improvisation release"],["G18","One-minute warning"],["G19","Roleplay closure"],["G20","Thank-your-partner"],["G21","Peer feedback"],["G22","Swap-role"],["G23","Shared-theory"],["G24","Cue / Signal"],["G25","Calibration / Rehearsal"],["G26","Discussion / Countdown"],["G27","Supervisor / Next-step"]]
 };
 const MODES = ["ACT","SPEAK","REFLECT","ATTEND","PRESSURE","PAUSE"];
-const TIMING = ["Looped","Linear","Timed","Responsive","Randomised","Interruptive","Layered",
-  "Escalating","De-escalating","Simultaneous-paired","Staggered-paired"];
-const IMPACT = ["Empowers","Validates","Nudges","Frames","Invites","Steers","Pressures","Persuades",
-  "Constrains","Silences","Discomforts","Shifts perspective","Escalates","Creates dissonance",
-  "Amplifies voice","Grounds","Re-orients","Regulates","Co-regulates","Demonstrates","Splits attention"];
+const TIMING = ["Looped","Linear","Timed","Responsive","Randomised","Interruptive","Layered","Escalating","De-escalating","Simultaneous-paired","Staggered-paired"];
+const IMPACT = ["Empowers","Validates","Nudges","Frames","Invites","Steers","Pressures","Persuades","Constrains","Silences","Discomforts","Shifts perspective","Escalates","Creates dissonance","Amplifies voice","Grounds","Re-orients","Regulates","Co-regulates","Demonstrates","Splits attention"];
 
-const BEATS = [
-  {id:"004_01_STU", title:"Check In 1 — participant", stream:"Shared audio",
-   script:`"Now we will have a quick check in with ourselves — we're gonna wake up our body. Clap your hands together hard. Then rub your hands together fast and hard to wake up the energy. Good, and then place your hands firmly on your legs. You are here and you are solid. This is the first of a number of physical check-ins. Please follow along."`},
-  {id:"004_01_SUP", title:"Check In 1 — supervisor", stream:"Supervisor stream",
-   script:`Supervisor narration: "This is the first of a number of physical check-ins. Please follow along." (Supervisor oversees the room as participants do the somatic check-in.)`},
-  {id:"005_01_STU", title:"Pain Recall — participant", stream:"Shared audio",
-   script:`"Research tells us that we are genetically modelled towards empathy. That means it's in you. It already exists in you and in all of your cells — the capacity to not only see that someone is in pain but also to imagine what that might be like. Because you've been in pain before. You know what it's like. You know what it's cost you to get here. You've been through some stuff and maybe you're still going through it.
+const CHAPTERS = [
+  { heading:"Chapter 004 — check in 1", title:"Check in 1", chref:"004_01_STU / 004_01_SUP", beats:[
+    { exportId:"004_01_STU", exportTitle:"Check In 1 — participant", ref:"004_01_STU → participant",
+      layer:"shared", layerText:"Shared audio — both players hear identical content",
+      streamLabel:"Script", streamSup:false,
+      text:`"Now we will have a quick check in with ourselves — we're gonna wake up our body. Clap your hands together hard. Then rub your hands together fast and hard to wake up the energy. Good, and then place your hands firmly on your legs. You are here and you are solid. This is the first of a number of physical check-ins. Please follow along."` },
+    { exportId:"004_01_SUP", exportTitle:"Check In 1 — supervisor", ref:"004_01_SUP → supervisor only",
+      layer:"sup", layerText:"Supervisor stream only",
+      streamLabel:"Supervisor narration", streamSup:true,
+      text:`"This is the first of a number of physical check-ins. Please follow along." (The supervisor oversees the room as participants do the somatic check-in.)` }
+  ]},
+  { heading:"Chapter 005 — pain recall", title:"Pain recall", chref:"005_01_STU / 005_SUP", beats:[
+    { exportId:"005_01_STU", exportTitle:"Pain Recall — participant", ref:"005_01_STU → participant",
+      layer:"shared", layerText:"Shared audio — both players hear identical content",
+      streamLabel:"Script", streamSup:false,
+      text:`"Research tells us that we are genetically modelled towards empathy. That means it's in you. It already exists in you and in all of your cells — the capacity to not only see that someone is in pain but also to imagine what that might be like. Because you've been in pain before. You know what it's like. You know what it's cost you to get here. You've been through some stuff and maybe you're still going through it.
 
 Close your eyes for a minute. It's hard to look inside and think of our pain, so let's just slow right down. Let's connect to our breath. Breathe slowly into your belly and out through the mouth. Let's try 3 breaths together…
 
@@ -130,57 +293,66 @@ Now place your right hand over your heart and take your mind back to a time when
 
 Your memory may be very faint; maybe just an echo; that's no problem. As you reflect on a moment when you felt pain, allow some compassion towards yourself for the intense experience you went through.
 
-Open your eyes and bring your hand down. Gently look at your partner. But more importantly, allow your partner to see you. Allow yourself to be looked at."`},
-  {id:"005_SUP", title:"Pain Recall — supervisor stream", stream:"Supervisor stream",
-   script:`Supervisor narration across 005_01–005_03: "The narrator asks the participants to recall an intense situation they've experienced. The participants are invited to close their eyes… Participants are asked to open their eyes and lower their hand. They are invited to look at their partner."`}
+Open your eyes and bring your hand down. Gently look at your partner. But more importantly, allow your partner to see you. Allow yourself to be looked at."` },
+    { exportId:"005_SUP", exportTitle:"Pain Recall — supervisor stream", ref:"005_SUP → supervisor stream (005_01–005_03)",
+      layer:"sup", layerText:"Supervisor stream only",
+      streamLabel:"Supervisor narration", streamSup:true,
+      text:`"The narrator asks the participants to recall an intense situation they've experienced. The participants are invited to close their eyes… Participants are asked to open their eyes and lower their hand. They are invited to look at their partner."` }
+  ]}
 ];
 
-const root = document.getElementById('beats');
-function group(beatIdx, dim, label, data, grouped){
-  let h = `<div class="dim"><span class="label">${label}</span>`;
+let beatIndex = 0;
+function dimGroup(i, dim, cls, label, data, grouped){
+  let h = `<div class="dim"><div class="dim-label">${label}</div>`;
   if(grouped){
     for(const fam in data){
-      h += `<div class="fam">${fam}</div><div class="opts">`;
+      h += `<div class="fam-label">${fam}</div><div class="opts">`;
       for(const [c,n] of data[fam]){
         const v = `${c} ${n}`;
-        h += `<label class="opt"><input type="checkbox" data-beat="${beatIdx}" data-dim="${dim}" value="${v}">${c} ${n}</label>`;
+        h += `<label class="opt ${cls}"><input type="checkbox" data-beat="${i}" data-dim="${dim}" value="${v}">${c} ${n}</label>`;
       }
       h += `</div>`;
     }
   } else {
     h += `<div class="opts">`;
     for(const v of data){
-      h += `<label class="opt"><input type="checkbox" data-beat="${beatIdx}" data-dim="${dim}" value="${v}">${v}</label>`;
+      h += `<label class="opt ${cls}"><input type="checkbox" data-beat="${i}" data-dim="${dim}" value="${v}">${v}</label>`;
     }
     h += `</div>`;
   }
-  h += `</div>`;
-  return h;
+  return h + `</div>`;
 }
-BEATS.forEach((b,i)=>{
-  let h = `<div class="beat"><div class="beat-head"><span class="bid">${b.id}</span>`+
-          `<span class="btitle">${b.title}</span><span class="stream">${b.stream}</span></div>`+
-          `<div class="script">${b.script}</div>`;
-  h += group(i,'inject','Inject type',INJECT,true);
-  h += group(i,'mode','Mode',MODES,false);
-  h += group(i,'timing','Timing',TIMING,false);
-  h += group(i,'impact','Relational impact',IMPACT,false);
-  h += `<div class="dim"><span class="label">Notes</span>`+
-       `<textarea data-beat="${i}" data-dim="notes" placeholder="Intent, observations, anything the tags don't capture…"></textarea></div>`;
+
+const META = [];
+const root = document.getElementById('beats');
+CHAPTERS.forEach(ch=>{
+  let h = `<div class="section-heading">${ch.heading}</div><div class="chapter">`+
+          `<div class="ch-header"><span class="ch-title">${ch.title}</span><span class="ch-ref">${ch.chref}</span></div>`;
+  ch.beats.forEach(b=>{
+    const i = beatIndex++;
+    META[i] = {id:b.exportId, title:b.exportTitle};
+    h += `<div class="layer-banner layer-${b.layer}">${b.layerText}</div>`;
+    h += `<div class="beat"><div class="beat-ref">${b.ref}</div>`;
+    h += `<div class="stream ${b.streamSup?'stream-sup':''}"><div class="stream-label">${b.streamLabel}</div><div class="stream-text">${b.text}</div></div>`;
+    h += dimGroup(i,'inject','inj','Inject type',INJECT,true);
+    h += dimGroup(i,'mode','mode','Mode',MODES,false);
+    h += dimGroup(i,'timing','tim','Timing',TIMING,false);
+    h += dimGroup(i,'impact','imp','Relational impact',IMPACT,false);
+    h += `<div class="notes-wrap"><div class="dim-label">Notes</div><textarea data-beat="${i}" placeholder="Intent, observations, anything the tags don't capture…"></textarea></div>`;
+    h += `</div>`;
+  });
   h += `</div>`;
   root.insertAdjacentHTML('beforeend', h);
 });
 
-function collect(i,dim){
-  return [...document.querySelectorAll(`input[data-beat="${i}"][data-dim="${dim}"]:checked`)].map(e=>e.value);
-}
+function collect(i,dim){ return [...document.querySelectorAll(`input[data-beat="${i}"][data-dim="${dim}"]:checked`)].map(e=>e.value); }
 function exportAll(){
   const who = document.getElementById('annotator').value || "Annotator";
   let out = `SIMFONIK ANNOTATION — HUMAN CONTROL\nAnnotator: ${who}\nDate: ${new Date().toISOString().slice(0,10)}\nChapters: 004–005, HP Part 1\n`+"─".repeat(60)+"\n\n";
-  BEATS.forEach((b,i)=>{
+  META.forEach((m,i)=>{
     const inj=collect(i,'inject'), md=collect(i,'mode'), tm=collect(i,'timing'), im=collect(i,'impact');
     const notes=(document.querySelector(`textarea[data-beat="${i}"]`).value||"").trim();
-    out += `${b.id}\n${b.title}\n`;
+    out += `${m.id}\n${m.title}\n`;
     out += `  Inject type:  ${inj.join(' · ')||'—'}\n`;
     out += `  Mode tag:     ${md.join(' · ')||'—'}\n`;
     out += `  Timing:       ${tm.join(' · ')||'—'}\n`;
@@ -192,10 +364,9 @@ function exportAll(){
   document.getElementById('pre').scrollIntoView({behavior:'smooth'});
 }
 function copyOut(){
-  const pre=document.getElementById('pre');
-  if(!pre){exportAll();}
-  const t=document.getElementById('pre').innerText;
-  navigator.clipboard.writeText(t).then(()=>{alert('Copied. Paste it into an email or doc and send back.');});
+  if(!document.getElementById('pre')) exportAll();
+  navigator.clipboard.writeText(document.getElementById('pre').innerText)
+    .then(()=>alert('Copied. Paste it into an email or doc and send back.'));
 }
 </script>
 </body>
