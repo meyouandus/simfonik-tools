@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIMFONIK Annotation — Human Control (Ch 004–005)</title>
+<style>
+  :root{
+    --ink:#1b1b1f; --muted:#6b6b76; --line:#e4e4ea; --bg:#faf9f7;
+    --card:#ffffff; --accent:#3a6ea5; --accent-soft:#eef3f9;
+    --script:#f4f2ee; --chip:#f0f0f3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  header{padding:32px 24px 20px;max-width:920px;margin:0 auto;}
+  h1{font-size:22px;margin:0 0 4px;}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 18px;}
+  .how{background:var(--accent-soft);border:1px solid #dbe6f2;border-radius:10px;
+    padding:14px 16px;font-size:13.5px;color:#33455a;margin-bottom:18px;}
+  .how b{color:var(--accent);}
+  .annot{display:flex;gap:10px;align-items:center;margin-bottom:8px;}
+  .annot input{flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;}
+  main{max-width:920px;margin:0 auto;padding:0 24px 80px;}
+  .beat{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin:18px 0;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .beat-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .bid{font-weight:700;font-size:15px;letter-spacing:.02em;}
+  .btitle{color:var(--muted);font-size:14px;}
+  .stream{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:20px;}
+  .script{background:var(--script);border-radius:10px;padding:14px 16px;margin:12px 0 16px;
+    font-size:14px;white-space:pre-wrap;color:#34343c;}
+  .dim{margin:14px 0;}
+  .dim > .label{font-weight:600;font-size:13px;margin-bottom:7px;display:block;}
+  .fam{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+    margin:9px 0 4px;}
+  .opts{display:flex;flex-wrap:wrap;gap:6px 8px;}
+  label.opt{display:inline-flex;align-items:center;gap:6px;background:var(--chip);
+    border:1px solid transparent;border-radius:20px;padding:4px 11px;font-size:12.5px;cursor:pointer;
+    user-select:none;}
+  label.opt:hover{border-color:#cdd6e0;}
+  label.opt input{margin:0;}
+  label.opt:has(input:checked){background:var(--accent-soft);border-color:var(--accent);color:#23476b;font-weight:600;}
+  textarea{width:100%;min-height:60px;padding:9px 11px;border:1px solid var(--line);
+    border-radius:8px;font:14px/1.5 inherit;resize:vertical;}
+  .bar{position:sticky;bottom:0;background:rgba(250,249,247,.95);backdrop-filter:blur(6px);
+    border-top:1px solid var(--line);padding:12px 24px;display:flex;gap:10px;justify-content:center;align-items:center;}
+  button{background:var(--accent);color:#fff;border:0;border-radius:9px;padding:10px 18px;
+    font-size:14px;font-weight:600;cursor:pointer;}
+  button.sec{background:#fff;color:var(--accent);border:1px solid var(--accent);}
+  #out{max-width:920px;margin:0 auto;padding:0 24px;}
+  pre{background:#1b1b1f;color:#e8e8ec;border-radius:12px;padding:18px;overflow:auto;
+    font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;}
+  .note{color:var(--muted);font-size:12.5px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>SIMFONIK Script Annotation — Human Control</h1>
+  <p class="sub">Healthcare Professional · Part 1 · Chapters 004–005 · Annotate independently, then export and send back</p>
+  <div class="how">
+    <b>How to use this sheet.</b> Read each script beat carefully. Use the tags below each beat to annotate it across four dimensions: <b>inject type</b> (what the inject is doing), <b>mode</b> (what it instructs the player to do), <b>timing</b> (how it enters the scene), and <b>relational impact</b> (what it does to the participant). Select as many as apply in each dimension. Add observations in the notes field. Work from your own judgement — there are no right answers. When done, click <b>Export annotations</b> at the bottom, copy the text, and send it back.
+  </div>
+  <div class="annot">
+    <label for="annotator" style="font-weight:600;font-size:13px;">Annotator:</label>
+    <input id="annotator" placeholder="Your name" value="Jorge Lopes Ramos">
+  </div>
+</header>
+<main id="beats"></main>
+
+<div id="out"></div>
+
+<div class="bar">
+  <button onclick="exportAll()">Export annotations</button>
+  <button class="sec" onclick="copyOut()">Copy to clipboard</button>
+  <span class="note">Exports in the same format as the previous round.</span>
+</div>
+
+<script>
+const INJECT = {
+  "A — Session management":[
+    ["A1","Welcome / Orientation"],["A2","Professional identity framing"],["A3","Psychological safety"],
+    ["A4","Participation rule"],["A5","Platform procedural"],["A6","End-of-experience"]],
+  "B — Safety & regulation":[
+    ["B1","Safety scan"],["B2","Environmental orientation"],["B3","Somatic grounding"],
+    ["B4","Breath regulation"],["B5","Body wake-up"],["B6","Co-regulation"],
+    ["B7","Consent / Boundary"],["B8","Safety boundary / opt-down"]],
+  "C — Relational setup":[
+    ["C1","Seating / Spatial setup"],["C2","Pair acknowledgement"],["C3","Role allocation"],
+    ["C4","Patient / Nurse / Context"],["C5","Proximity"]],
+  "D — Reflective & cognitive":[
+    ["D1","Self-reflection"],["D2","Memory recall"],["D3","Pain recall"],
+    ["D4","Anti-assumption"],["D5","Ethical"],["D6","Internal distraction"]],
+  "E — Attention & observation":[
+    ["E1","Partner observation"],["E2","Emotional inference"],["E3","Soft focus / Gaze"],
+    ["E4","Eye-contact training"],["E5","Listening posture"],["E6","Full-body listening"],
+    ["E7","Fake-listening"],["E8","Repeat-back"],["E9","Observational"]],
+  "F — Embodied & relational":[
+    ["F1","Face training"],["F2","Mirroring"],["F3","Mimicry warning"],["F4","Therapeutic touch"]],
+  "G — Voice, dialogue & roleplay":[
+    ["G1","Vocal prosody theory"],["G2","Vocal warm-up"],["G3","Meet-and-match voice"],
+    ["G4","Intensity-level"],["G5","Emotional validation"],["G6","Exact-line-to-repeat"],
+    ["G7","Own-words speech"],["G8","Ask-a-question"],["G9","Response instruction"],
+    ["G10","Observe-and-wait"],["G11","Designed silence"],["G12","Role-defining"],
+    ["G13","Institutional procedural"],["G14","Disruptive"],["G15","Repetitive"],
+    ["G16","Scenario handover"],["G17","Improvisation release"],["G18","One-minute warning"],
+    ["G19","Roleplay closure"],["G20","Thank-your-partner"],["G21","Peer feedback"],
+    ["G22","Swap-role"],["G23","Shared-theory"],["G24","Cue / Signal"],
+    ["G25","Calibration / Rehearsal"],["G26","Discussion / Countdown"],["G27","Supervisor / Next-step"]]
+};
+const MODES = ["ACT","SPEAK","REFLECT","ATTEND","PRESSURE","PAUSE"];
+const TIMING = ["Looped","Linear","Timed","Responsive","Randomised","Interruptive","Layered",
+  "Escalating","De-escalating","Simultaneous-paired","Staggered-paired"];
+const IMPACT = ["Empowers","Validates","Nudges","Frames","Invites","Steers","Pressures","Persuades",
+  "Constrains","Silences","Discomforts","Shifts perspective","Escalates","Creates dissonance",
+  "Amplifies voice","Grounds","Re-orients","Regulates","Co-regulates","Demonstrates","Splits attention"];
+
+const BEATS = [
+  {id:"004_01_STU", title:"Check In 1 — participant", stream:"Shared audio",
+   script:`"Now we will have a quick check in with ourselves — we're gonna wake up our body. Clap your hands together hard. Then rub your hands together fast and hard to wake up the energy. Good, and then place your hands firmly on your legs. You are here and you are solid. This is the first of a number of physical check-ins. Please follow along."`},
+  {id:"004_01_SUP", title:"Check In 1 — supervisor", stream:"Supervisor stream",
+   script:`Supervisor narration: "This is the first of a number of physical check-ins. Please follow along." (Supervisor oversees the room as participants do the somatic check-in.)`},
+  {id:"005_01_STU", title:"Pain Recall — participant", stream:"Shared audio",
+   script:`"Research tells us that we are genetically modelled towards empathy. That means it's in you. It already exists in you and in all of your cells — the capacity to not only see that someone is in pain but also to imagine what that might be like. Because you've been in pain before. You know what it's like. You know what it's cost you to get here. You've been through some stuff and maybe you're still going through it.
+
+Close your eyes for a minute. It's hard to look inside and think of our pain, so let's just slow right down. Let's connect to our breath. Breathe slowly into your belly and out through the mouth. Let's try 3 breaths together…
+
+Now place your right hand over your heart and take your mind back to a time when you felt a deep pain or an intense emotion. Keep your eyes closed and see what comes to mind. Remember you are in control — if something feels too painful to think about, reflect on a time that has less charge for you.
+
+Your memory may be very faint; maybe just an echo; that's no problem. As you reflect on a moment when you felt pain, allow some compassion towards yourself for the intense experience you went through.
+
+Open your eyes and bring your hand down. Gently look at your partner. But more importantly, allow your partner to see you. Allow yourself to be looked at."`},
+  {id:"005_SUP", title:"Pain Recall — supervisor stream", stream:"Supervisor stream",
+   script:`Supervisor narration across 005_01–005_03: "The narrator asks the participants to recall an intense situation they've experienced. The participants are invited to close their eyes… Participants are asked to open their eyes and lower their hand. They are invited to look at their partner."`}
+];
+
+const root = document.getElementById('beats');
+function group(beatIdx, dim, label, data, grouped){
+  let h = `<div class="dim"><span class="label">${label}</span>`;
+  if(grouped){
+    for(const fam in data){
+      h += `<div class="fam">${fam}</div><div class="opts">`;
+      for(const [c,n] of data[fam]){
+        const v = `${c} ${n}`;
+        h += `<label class="opt"><input type="checkbox" data-beat="${beatIdx}" data-dim="${dim}" value="${v}">${c} ${n}</label>`;
+      }
+      h += `</div>`;
+    }
+  } else {
+    h += `<div class="opts">`;
+    for(const v of data){
+      h += `<label class="opt"><input type="checkbox" data-beat="${beatIdx}" data-dim="${dim}" value="${v}">${v}</label>`;
+    }
+    h += `</div>`;
+  }
+  h += `</div>`;
+  return h;
+}
+BEATS.forEach((b,i)=>{
+  let h = `<div class="beat"><div class="beat-head"><span class="bid">${b.id}</span>`+
+          `<span class="btitle">${b.title}</span><span class="stream">${b.stream}</span></div>`+
+          `<div class="script">${b.script}</div>`;
+  h += group(i,'inject','Inject type',INJECT,true);
+  h += group(i,'mode','Mode',MODES,false);
+  h += group(i,'timing','Timing',TIMING,false);
+  h += group(i,'impact','Relational impact',IMPACT,false);
+  h += `<div class="dim"><span class="label">Notes</span>`+
+       `<textarea data-beat="${i}" data-dim="notes" placeholder="Intent, observations, anything the tags don't capture…"></textarea></div>`;
+  h += `</div>`;
+  root.insertAdjacentHTML('beforeend', h);
+});
+
+function collect(i,dim){
+  return [...document.querySelectorAll(`input[data-beat="${i}"][data-dim="${dim}"]:checked`)].map(e=>e.value);
+}
+function exportAll(){
+  const who = document.getElementById('annotator').value || "Annotator";
+  let out = `SIMFONIK ANNOTATION — HUMAN CONTROL\nAnnotator: ${who}\nDate: ${new Date().toISOString().slice(0,10)}\nChapters: 004–005, HP Part 1\n`+"─".repeat(60)+"\n\n";
+  BEATS.forEach((b,i)=>{
+    const inj=collect(i,'inject'), md=collect(i,'mode'), tm=collect(i,'timing'), im=collect(i,'impact');
+    const notes=(document.querySelector(`textarea[data-beat="${i}"]`).value||"").trim();
+    out += `${b.id}\n${b.title}\n`;
+    out += `  Inject type:  ${inj.join(' · ')||'—'}\n`;
+    out += `  Mode tag:     ${md.join(' · ')||'—'}\n`;
+    out += `  Timing:       ${tm.join(' · ')||'—'}\n`;
+    out += `  Impact:       ${im.join(' · ')||'—'}\n`;
+    if(notes) out += `  Notes:        ${notes}\n`;
+    out += `\n`;
+  });
+  document.getElementById('out').innerHTML = `<pre id="pre">${out.replace(/</g,'&lt;')}</pre>`;
+  document.getElementById('pre').scrollIntoView({behavior:'smooth'});
+}
+function copyOut(){
+  const pre=document.getElementById('pre');
+  if(!pre){exportAll();}
+  const t=document.getElementById('pre').innerText;
+  navigator.clipboard.writeText(t).then(()=>{alert('Copied. Paste it into an email or doc and send back.');});
+}
+</script>
+</body>
+</html>
