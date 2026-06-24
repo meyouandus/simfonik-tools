@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INTERACT — Mock Panel Question Bank</title>
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171b21; --panel2:#1d222a; --line:#2a313b;
+    --ink:#e8ecf1; --muted:#9aa6b2; --accent:#4f8cff; --accent2:#34d399;
+    --warn:#f5a623; --google:#4f8cff; --cpi:#a78bfa; --apol:#34d399;
+    --crit:#f59e0b; --curve:#f87171; --set:#38bdf8; --decide:#fb7185; --build:#22d3ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 20px 80px;}
+  header h1{font-size:1.7rem;margin:0 0 6px;letter-spacing:-0.02em;}
+  .meta{color:var(--muted);font-size:.92rem;margin-bottom:4px;}
+  .anchor{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:10px;padding:14px 16px;margin:18px 0;font-size:.95rem;color:#cdd6e0;}
+  .anchor b{color:var(--ink);}
+  .controls{position:sticky;top:0;background:rgba(15,18,22,.92);backdrop-filter:blur(8px);
+    padding:12px 0 10px;z-index:10;border-bottom:1px solid var(--line);margin-bottom:8px;}
+  .search{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--ink);font-size:.95rem;margin-bottom:10px;}
+  .search::placeholder{color:var(--muted);}
+  .filters{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--muted);
+    padding:5px 11px;border-radius:20px;font-size:.82rem;user-select:none;transition:.15s;}
+  .chip:hover{color:var(--ink);}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:10px;}
+  .toolbtn{cursor:pointer;background:var(--panel2);border:1px solid var(--line);color:var(--muted);
+    padding:6px 12px;border-radius:8px;font-size:.82rem;}
+  .toolbtn:hover{color:var(--ink);}
+  .progress{font-size:.82rem;color:var(--muted);}
+  .progress b{color:var(--accent2);}
+  .grouphdr{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+    margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin-bottom:10px;transition:.15s;}
+  .card.done{opacity:.5;}
+  .qtop{display:flex;gap:10px;align-items:flex-start;}
+  .num{font-size:.74rem;color:var(--muted);background:var(--panel2);border:1px solid var(--line);
+    border-radius:6px;padding:2px 7px;flex:none;margin-top:2px;font-variant-numeric:tabular-nums;}
+  .q{font-weight:600;font-size:1.02rem;cursor:pointer;flex:1;}
+  .tag{font-size:.68rem;padding:2px 8px;border-radius:20px;flex:none;margin-top:2px;font-weight:600;}
+  .reveal{margin-top:10px;display:none;border-top:1px dashed var(--line);padding-top:10px;}
+  .reveal.open{display:block;}
+  .test{font-size:.86rem;color:var(--warn);margin-bottom:7px;font-style:italic;}
+  .guide{font-size:.93rem;color:#cdd6e0;}
+  .cardtools{display:flex;gap:14px;margin-top:11px;font-size:.78rem;}
+  .cardtools span{cursor:pointer;color:var(--muted);}
+  .cardtools span:hover{color:var(--ink);}
+  .hidden{display:none !important;}
+  footer{color:var(--muted);font-size:.8rem;margin-top:40px;border-top:1px solid var(--line);padding-top:16px;}
+  .empty{color:var(--muted);text-align:center;padding:40px;font-style:italic;}
+  @media print{
+    .controls,.cardtools{display:none;} body{background:#fff;color:#000;}
+    .card,.anchor{border-color:#ccc;background:#fff;} .reveal{display:block !important;}
+    .test{color:#a06a00;} .guide{color:#222;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>INTERACT — Mock Panel Question Bank</h1>
+    <div class="meta">Google.org Impact Challenge · Friday 26 June 2026, 14:00 UK · 30 min · Google Meet</div>
+    <div class="meta">Panel: Google.org · Centre for Public Impact · Apolitical — programme &amp; public-impact people, no AI engineers.</div>
+  </header>
+
+  <div class="anchor">
+    <b>The anchor — hold this in your head:</b> GMCA found the gap → SIMFONIK proved the fix → INTERACT scales it with AI → Google validates and replicates. Lead everywhere with the public-service-reform story, not the AI story. What they're screening for: <i>a public-service reform enabled by AI</i> (good) vs <i>an AI project hunting for a government problem</i> (fatal).
+  </div>
+  <div class="anchor" style="border-left-color:var(--build);">
+    <b>Entity discipline (protect everywhere):</b> for Google, <b>ZU-UK is the applicant</b>, <b>SIMFONIK is the platform/evidence base</b>, and <b>FeedAR / James / Alastair are "specialist technical collaborators"</b> — never consortium, subcontractor or engineering team. The "SIMFONIK Ltd as lead / consortium / WP" vocabulary belongs only to the Innovate UK bid. FeedAR was <i>not named</i> in the Google submission; it fits the "specialist contracts" budget line.
+  </div>
+
+  <div class="controls">
+    <input class="search" id="search" type="text" placeholder="Search questions…" oninput="render()">
+    <div class="filters" id="filters"></div>
+    <div class="row2">
+      <div>
+        <span class="toolbtn" onclick="toggleAll(true)">Expand all</span>
+        <span class="toolbtn" onclick="toggleAll(false)">Collapse all</span>
+        <span class="toolbtn" onclick="resetProgress()">Reset progress</span>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+
+  <div id="list"></div>
+  <footer>
+    Tap a question to reveal what it's really testing and how to handle it. Mark each <b>practiced</b> as you drill. Progress saves in this browser. Print for an offline crib sheet.<br>
+    Drawn from the INTERACT Interview Intelligence Pack. Pair each answer with its source citation when rehearsing.
+  </footer>
+</div>
+
+<script>
+const CATS = {
+  set:    {label:"Set questions", color:"var(--set)"},
+  decide: {label:"Decisive", color:"var(--decide)"},
+  google: {label:"Google lens", color:"var(--google)"},
+  cpi:    {label:"CPI lens", color:"var(--cpi)"},
+  apol:   {label:"Apolitical lens", color:"var(--apol)"},
+  crit:   {label:"Criteria gaps", color:"var(--crit)"},
+  curve:  {label:"Curveballs", color:"var(--curve)"},
+  build:  {label:"Who builds it", color:"var(--build)"},
+  close:  {label:"The close", color:"var(--set)"},
+};
+const GROUPS = {
+  set:"A · The four set questions (shared in advance)",
+  decide:"B · The two questions that decide it",
+  google:"C · Google.org lens — is the AI real, and will it scale?",
+  cpi:"C · Centre for Public Impact lens — legitimate public-system improvement?",
+  apol:"C · Apolitical lens — would public servants actually use it?",
+  crit:"D · By criterion — the gaps the panel will probe",
+  curve:"E · Curveballs &amp; pressure tests",
+  build:"F · Who builds it — FeedAR, James &amp; Alastair",
+  close:"H · The close, and your questions for them",
+};
+const Q = [
+ {c:"set",q:"Introductions — who's in the room and what each of you owns.",t:"Does the room itself prove the proposal — a complete team with government visibly present?",g:"~40 sec, choreographed. Name + role + the one risk you own. No biographies. Sequence: vision/evidence → delivery/scale → government → architecture/privacy."},
+ {c:"set",q:"Tell us about the origin, the evidence, and the human impact.",t:"Is this a real public-service problem with a proven pathway — not a vision or a prototype?",g:"Start with the system gap GMCA identified (not the AI), then the SIMFONIK proof, then the AI extension in one line, then one named human moment."},
+ {c:"set",q:"Tell us about the government partnership, the MVP and how it gets adopted.",t:"Is there a real route to deployment, or only a support letter?",g:"Signed letter (McCarthy + Wilding, 2 April); MOU within two weeks of a positive decision; MVP embedded in existing workflows; durable home = Live Well / Get GM Working. Never call GMCA a client."},
+ {c:"set",q:"Walk us through data, privacy, and the hurdles before you write a line of code.",t:"Will privacy, governance or data-readiness block the build before it starts?",g:"Lead with scope and posture (employment-support data only, health excluded, deliberately conservative). Four phases plainly; DPIA/DSA status; physical-isolation escalation path."},
+
+ {c:"decide",q:"Why AI, really? Couldn't you do this without it?",t:"Is the AI necessary and bounded, or ornamental? The single biggest AI-washing risk.",g:"Answer with a mechanism, not a slogan: the realism is human; the scale is the AI. Three bounded roles — before, Gemini drafts local scenarios a human approves into a fixed library (nothing live); during, a local Gemma listens across every pair and flags what one facilitator can't catch (hesitancy on authority, deflection on salary, confidence drop), suggesting a prompt the facilitator chooses; after, anonymised data becomes insight. Humans always lead; the AI never decides anything about a person. AI does only what no human could across thousands of simultaneous conversations: localise it, see inside it, measure it."},
+ {c:"decide",q:"What's your evidence that interaction gains actually lead to employment?",t:"The gap you haven't closed. CPI will push hardest here.",g:"Own the theory of change, then own the gap honestly: SIMFONIK proves participation and confidence; INTERACT is designed with GMCA to test conversion to 6- and 12-month progression. Bring 3–5 adjacent-literature references so \"we'll test it\" becomes \"research suggests the link, and we'll verify it at scale.\""},
+
+ {c:"google",q:"Why not just use ChatGPT, or an off-the-shelf LLM?",t:"Is there a defensible product, or a wrapper?",g:"The AI is one component; the product is cohort delivery, facilitator orchestration, outcome measurement and governed integration. A chatbot is none of those, and isn't human-to-human."},
+ {c:"google",q:"Which Google models and services, specifically, and why each?",t:"Do you actually understand the stack you've proposed?",g:"Gemini (pre-session scenario generation), Gemma (in-VPC real-time classification), Vertex + BigQuery (anonymised analytics)."},
+ {c:"google",q:"What does \"agentic\" mean in your system — what does the AI decide autonomously?",t:"Probing the responsible-AI boundary.",g:"It selects from a validated library; it never generates live or decides anything about a person."},
+ {c:"google",q:"What happens when the AI gets it wrong, or fails entirely?",t:"Graceful degradation.",g:"No single AI component is mission-critical: Gemini fails → validated library; Gemma fails → standard facilitated SIMFONIK; analytics fail → only evaluation is delayed."},
+ {c:"google",q:"How do Google's AI Principles show up in your design?",t:"Responsible-innovation checkbox — name them explicitly.",g:"Human oversight, no automated decisions, disaggregated analytics, neurodivergent co-design, data minimisation."},
+ {c:"google",q:"What concretely is the 6-month Demo Day prototype, vs the month-12 system?",t:"Do you understand the Accelerator's own milestones?",g:"One or two sentences defining the narrower prototype scope, distinct from the full system."},
+ {c:"google",q:"What would Google's pro-bono AI experts help you build that you can't alone?",t:"Are you a fundable partner, or a finished product asking for cash?",g:"Multi-model optimisation, the real-time pipeline, multi-region architecture, responsible-AI review."},
+ {c:"google",q:"Can you commit a Decision Maker and a Technical Project Lead at ~4 hrs/week?",t:"Logistical feasibility for the Accelerator.",g:"Yes — name them."},
+
+ {c:"cpi",q:"In one sentence: whose problem is this, and who says so?",t:"Legitimacy.",g:"GMCA's own words — \"we have identified a specific gap\" — in the signed letter."},
+ {c:"cpi",q:"How is this different from employability training?",t:"Are you just rebadging existing provision?",g:"Training transfers knowledge; INTERACT is repeated rehearsal infrastructure with outcome capture. Never call it training."},
+ {c:"cpi",q:"What's your theory of change, end to end?",t:"Is the causal logic coherent, or hopeful?",g:"Gap → rehearsal at scale → confidence/readiness gains → (the thing you're testing) progression at 6/12 months."},
+ {c:"cpi",q:"How was this co-designed with the people it serves, not just for them?",t:"Co-design legitimacy.",g:"Neurodivergent co-design (Bee Neuroinclusive Code); facilitators central; one concrete example."},
+ {c:"cpi",q:"What's your learning loop — how does the system improve, and who learns from it?",t:"CPI rewards learning loops.",g:"Disaggregated outcome data, IES-aligned independent evaluation, open methodology."},
+ {c:"cpi",q:"What if the evidence comes back negative — outcomes don't improve?",t:"Intellectual honesty + value even on failure.",g:"You still produce the strongest dataset yet on the readiness gap; failure signals are pre-defined and action-triggering."},
+
+ {c:"apol",q:"Walk me through a Tuesday for the facilitator using this.",t:"Practitioner reality, not the vision deck.",g:"Existing session time, smartphones, AI supports them during the session; they stay the final authority."},
+ {c:"apol",q:"What new burden does this put on already-stretched public servants?",t:"Adoption friction.",g:"No new procurement, runs in existing workflows, 1-day onboarding, no specialist hardware."},
+ {c:"apol",q:"Does the AI ever override or second-guess the facilitator's judgement?",t:"The fear that AI replaces people.",g:"Never. It augments; the human decides."},
+ {c:"apol",q:"Who owns it inside GMCA once Google walks away — a person or a system?",t:"Durability beyond a champion.",g:"Multi-directorate ownership embedded in Get GM Working / Live Well, not one individual."},
+
+ {c:"crit",q:"You're six people and ~$500k a year. How do you deliver a $2.75M, 36-month programme?",t:"The capacity question, asked bluntly.",g:"It scales through systems, not headcount. Two decades of ZU-UK multi-partner programmes (healthcare, HE, arts, public services; Innovate UK R&D, NHS-linked simulation) already carry the governance, evaluation, procurement and data-management load. ZU-UK's role is leadership, methodology ownership, partner management and QA; delivery runs through existing GMCA-funded pathways, trained facilitators, specialist collaborators and dedicated grant-funded roles phased to milestones. The grant funds dedicated capacity — it does not rely on the existing team absorbing this alongside business as usual."},
+ {c:"crit",q:"What exactly does the $2.75M buy, by year?",t:"Budget realism.",g:"~$925k / $1,015k / $810k; Personnel $1.2M, Tech $650k, Infra $300k, Partnerships $350k, M&E + indirect $250k."},
+ {c:"crit",q:"What's the single biggest risk to delivery, and your mitigation?",t:"Self-awareness.",g:"Pick the honest one (evidence conversion, or IG timeline) and show the mitigation already in the plan."},
+ {c:"crit",q:"What has to be true in the first 90 days for this to be on track?",t:"Execution thinking.",g:"MOU signed, DPIA/DSA pathway opened, first cohort and programme named."},
+ {c:"crit",q:"How does Manchester become national — concretely, not aspirationally?",t:"The hardest criterion.",g:"The replication unit: one named government partner + 2-week scenario localisation + 1-day facilitator onboarding + standard smartphones. And the reach is conservative: 30,000+ is a fraction of the existing pipeline — Work Well alone targets ~8,000/year, and 10 delivery orgs running two cohort-days a month at 50/session is ~12,000/year (~36,000 over three years), below SIMFONIK's proven 150–200/day. The constraint was never finding people; it was the infrastructure."},
+ {c:"crit",q:"Why would a second authority adopt this — evidence of demand beyond GMCA?",t:"Pull, not push.",g:"GLA Good Growth (Clare Lovett) Year 2; Get Britain Working, GMCA 1 of 8 Trailblazers, 317 LAs in scope."},
+ {c:"crit",q:"What's genuinely reusable across regions, and what gets rebuilt each time?",t:"Is the replication unit real?",g:"Methodology and platform reusable; only the localised scenario library changes."},
+ {c:"crit",q:"How will you share learnings — what's open, and under what licence?",t:"Commitment to share best practice.",g:"Scenario methodology (MIT), facilitation frameworks (Creative Commons), anonymised datasets via academic partners; platform licensed."},
+ {c:"crit",q:"What happens to INTERACT the day after Google funding ends?",t:"Sustainability is an explicit sub-criterion.",g:"Authority + employer licensing via VCFSE routes; break-even end of Year 3 (~£480k base case)."},
+ {c:"crit",q:"Who pays for it at steady state, and have they said yes?",t:"Is the revenue real?",g:"Be honest about committed vs intended; ideally one named authority/employer signalling informal interest."},
+ {c:"crit",q:"How do a neurodivergent jobseeker, a person with a long-term health condition, and a NEET young person each hit this barrier differently?",t:"Human-centred design depth — the one Impact tighten.",g:"Have three distinct, specific answers, not one generic one."},
+ {c:"crit",q:"What's the one number that tells you this worked?",t:"Headline outcome discipline (mirror the funded comparators).",g:"Pick it and own it; don't list ten metrics."},
+
+ {c:"curve",q:"What if GMCA's leadership or political control changes mid-project?",t:"Single-point-of-failure risk.",g:"Multi-directorate ownership (Economy, Work & Skills, Policy, Digital, Live Well/NHS), embedded in Get GM Working — not one champion."},
+ {c:"curve",q:"Why you, and not a bigger organisation that could absorb this tomorrow?",t:"Why-this-team.",g:"You hold the proven method, the human-behaviour expertise, and the warm GMCA relationship; that combination doesn't exist elsewhere."},
+ {c:"curve",q:"Isn't this just a Manchester pilot dressed up as national infrastructure?",t:"The fatal framing they're screening for.",g:"Manchester is deployment one; the replication unit is built into the design from day one."},
+ {c:"curve",q:"What's the part of this you're most worried about?",t:"Honesty test.",g:"Name the real one (evidence conversion). Owning it reads as credibility; deflecting reads as risk."},
+ {c:"curve",q:"Why does this need grant funding rather than commercial investment?",t:"Why philanthropy.",g:"Public infrastructure + first-of-its-kind evidence base = public good, not a VC-returnable bet, until the evidence exists."},
+ {c:"curve",q:"What would make you walk away from this project?",t:"Do you have a real stop condition?",g:"Pre-defined failure signals; you'd rather know than over-claim."},
+ {c:"curve",q:"How do you stop the AI baking in bias against the people you're trying to help?",t:"Equity under load.",g:"Neurodivergent co-design, human oversight, no automated decisions, disaggregated analytics — and you measure for it."},
+ {c:"curve",q:"A skeptical public servant says \"we've seen tech promises before.\" What do you say?",t:"Apolitical's core fear.",g:"It already works (SIMFONIK proof), it runs in their existing time, and they stay in charge."},
+ {c:"curve",q:"If we funded only one year, what would you prove?",t:"Forcing prioritisation.",g:"The first large-scale readiness→progression signal plus a working, governed deployment in one programme."},
+ {c:"curve",q:"What does success look like in three years that justifies a category-defining investment?",t:"Mabel's portfolio lens.",g:"National replication path live (GMCA → GLA → Trailblazers), evidence base published, government adoption durable."},
+
+ {c:"build",q:"Who is actually building this?",t:"Is there a real delivery capability?",g:"\"ZU-UK leads and owns delivery, building with a phased in-house team for continuity, IP and the open-source release. The specialist AI architecture is realised with our long-standing collaborators FeedAR — James on responsible, bounded AI architecture, Alastair on product and human-centred design.\""},
+ {c:"build",q:"Why work with FeedAR rather than build it internally?",t:"Delivery-model logic.",g:"ZU-UK owns the methodology, leadership, delivery model and platform; FeedAR brings specialist AI/product expertise that would be inefficient to build in-house before the project starts. The model combines in-house ownership, specialist expertise from day one, and grant-funded recruitment over time — minimising risk while keeping ownership with ZU-UK."},
+ {c:"build",q:"Why these two specifically (James & Alastair)?",t:"Credibility of the named people.",g:"Fifteen years working together since 2011, complementary expertise: James — \"AI on rails\" (bounded, auditable generative AI; 2026 Shaw Brothers production proof); Alastair — human–AI interaction and multi-market human-centred delivery (Toyota Motor Europe across EMEA, the closest analogue to region-by-region replication). Versatile builders who get emerging tech trusted in real public services — a fit, not a gap."},
+ {c:"build",q:"Is FeedAR a partner in the application?",t:"Entity discipline — the highest-risk question.",g:"\"FeedAR wasn't named in the application — the bid sets out a phased in-house team plus specialist technical contracts, and FeedAR fits squarely within that specialist capacity.\" Never say consortium, subcontractor or WP."},
+ {c:"build",q:"You don't have deep-ML researchers — isn't that a gap?",t:"Reframe as positioning, not weakness.",g:"INTERACT doesn't depend on frontier-model research; it depends on responsible deployment, governance, product and adoption — ZU-UK/FeedAR's strength. Where deeper ML specialism helps, the Google.org Accelerator's engineering support is available."},
+ {c:"build",q:"What makes this technical partnership low-risk?",t:"De-risking the build.",g:"A 15-year continuous relationship (since 2011), not a consortium assembled for a bid; shared values and proven ways of working; AI realised by trusted long-term collaborators, not an external supplier. The system uses open-weight models (not foundation-model building), automates no decisions, uses employment data only, needs no new hardware or procurement, and runs inside GMCA's governance."},
+
+ {c:"close",q:"\"Is there anything we haven't covered that gives you pause?\"",t:"They may end here.",g:"Have a crisp 20-second answer to whatever they raise; never fill silence with new doubt."},
+ {c:"close",q:"\"Why should Google fund this — in one sentence?\"",t:"The wrap.",g:"Google turns a proven local platform into national infrastructure and funds one of the first large-scale datasets linking interaction-readiness to employment progression."},
+ {c:"close",q:"Your questions for them (ask 1–2).",t:"Shows you treat it as a partnership.",g:"What does a strong first-90-days in the Accelerator look like to you? · Which of the four criteria should we most strengthen before Demo Day? · Who from Google's technical side would we be paired with, and on what?"},
+];
+
+let activeCat = "all";
+let done = {};
+try { done = JSON.parse(localStorage.getItem("interact_done")||"{}"); } catch(e){ done = {}; }
+function save(){ try{ localStorage.setItem("interact_done", JSON.stringify(done)); }catch(e){} }
+
+function buildFilters(){
+  const f = document.getElementById("filters");
+  let html = `<span class="chip ${activeCat==='all'?'active':''}" onclick="setCat('all')">All (${Q.length})</span>`;
+  for(const k in CATS){
+    const n = Q.filter(x=>x.c===k).length;
+    html += `<span class="chip ${activeCat===k?'active':''}" onclick="setCat('${k}')">${CATS[k].label} (${n})</span>`;
+  }
+  f.innerHTML = html;
+}
+function setCat(c){ activeCat=c; buildFilters(); render(); }
+function setDone(i,v){ if(v) done[i]=1; else delete done[i]; save(); render(); }
+function toggleReveal(i){ const el=document.getElementById("rev"+i); if(el) el.classList.toggle("open"); }
+function toggleAll(open){ document.querySelectorAll(".reveal").forEach(e=>e.classList.toggle("open",open)); }
+function resetProgress(){ done={}; save(); render(); }
+
+function render(){
+  const term = (document.getElementById("search").value||"").toLowerCase();
+  const list = document.getElementById("list");
+  let html=""; let lastGroup=""; let shown=0;
+  Q.forEach((item,i)=>{
+    if(activeCat!=="all" && item.c!==activeCat) return;
+    if(term && !(item.q.toLowerCase().includes(term)||item.t.toLowerCase().includes(term)||item.g.toLowerCase().includes(term))) return;
+    shown++;
+    if(item.c!==lastGroup){ html += `<div class="grouphdr">${GROUPS[item.c]}</div>`; lastGroup=item.c; }
+    const cat=CATS[item.c];
+    html += `
+      <div class="card ${done[i]?'done':''}">
+        <div class="qtop">
+          <span class="num">${i+1}</span>
+          <span class="q" onclick="toggleReveal(${i})">${item.q}</span>
+          <span class="tag" style="background:${cat.color};color:#0f1216;">${cat.label.split(' ')[0]}</span>
+        </div>
+        <div class="reveal" id="rev${i}">
+          <div class="test">Really testing: ${item.t}</div>
+          <div class="guide">${item.g}</div>
+        </div>
+        <div class="cardtools">
+          <span onclick="toggleReveal(${i})">▸ Reveal / hide</span>
+          <span onclick="setDone(${i},${done[i]?0:1})">${done[i]?'↺ Mark unpracticed':'✓ Mark practiced'}</span>
+        </div>
+      </div>`;
+  });
+  if(shown===0) html = `<div class="empty">No questions match.</div>`;
+  list.innerHTML = html;
+  const total = Q.length, d = Object.keys(done).length;
+  document.getElementById("progress").innerHTML = `Practiced <b>${d}</b> / ${total}`;
+}
+buildFilters(); render();
+</script>
+</body>
+</html>
