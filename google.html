@@ -82,6 +82,7 @@
   <div class="controls">
     <input class="search" id="search" type="text" placeholder="Search questions…" oninput="render()">
     <div class="filters" id="filters"></div>
+    <div class="filters" id="srcfilters" style="margin-top:8px"></div>
     <div class="row2">
       <div>
         <span class="toolbtn" onclick="toggleAll(true)">Expand all</span>
@@ -94,7 +95,8 @@
 
   <div id="list"></div>
   <footer>
-    Tap a question to reveal what it's really testing and how to handle it. Mark each <b>practiced</b> as you drill. Progress saves in this browser. Print for an offline crib sheet.<br>
+    Tap a question to reveal what it's really testing and how to handle it. Mark each <b>practiced</b> as you drill. Progress saves in this browser. Print for an offline crib sheet.<br><br>
+    Each question carries a source badge: <b style="color:#34d399">Shared</b> = one of Google's four advance questions · <b style="color:#f5a623">Flagged</b> = named as a likely probe in our own intelligence pack / FeedAR guidance · <b style="color:#9aa6b2">Derived</b> = anticipated from Google's published assessment criteria, not on any list. Filter by source to drill certainties vs. anticipated.<br>
     Drawn from the INTERACT Interview Intelligence Pack. Pair each answer with its source citation when rehearsing.
   </footer>
 </div>
@@ -188,7 +190,26 @@ const Q = [
  {c:"close",q:"Your questions for them (ask 1–2).",t:"Shows you treat it as a partnership.",g:"What does a strong first-90-days in the Accelerator look like to you? · Which of the four criteria should we most strengthen before Demo Day? · Who from Google's technical side would we be paired with, and on what?"},
 ];
 
+// Provenance per question, in the same order as Q above.
+// g = Google-shared (official advance question) · t = Team-flagged (named in your pack/guidance) · c = Criteria-derived (anticipated from Google's published criteria)
+const S = [
+ 'g','g','g','g',
+ 't','t',
+ 't','c','c','t','t','t','c','t',
+ 'c','t','c','t','c','t',
+ 'c','c','c','t',
+ 't','c','c','c','t','t','c','c','t','t','t','c',
+ 't','c','t','c','c','c','t','c','c','t',
+ 't','t','t','t','t','t',
+ 'c','t','c'
+];
+const SRC = {
+ g:{label:"Google-shared", short:"Shared", color:"#34d399"},
+ t:{label:"Team-flagged", short:"Flagged", color:"#f5a623"},
+ c:{label:"Criteria-derived", short:"Derived", color:"#9aa6b2"},
+};
 let activeCat = "all";
+let activeSrc = "all";
 let done = {};
 try { done = JSON.parse(localStorage.getItem("interact_done")||"{}"); } catch(e){ done = {}; }
 function save(){ try{ localStorage.setItem("interact_done", JSON.stringify(done)); }catch(e){} }
@@ -203,6 +224,16 @@ function buildFilters(){
   f.innerHTML = html;
 }
 function setCat(c){ activeCat=c; buildFilters(); render(); }
+function buildSrc(){
+  const el = document.getElementById("srcfilters");
+  let html = `<span class="chip ${activeSrc==='all'?'active':''}" onclick="setSrc('all')">All sources</span>`;
+  for(const k of ['g','t','c']){
+    const n = S.filter(x=>x===k).length;
+    html += `<span class="chip ${activeSrc===k?'active':''}" onclick="setSrc('${k}')" title="${SRC[k].label}">${SRC[k].label} (${n})</span>`;
+  }
+  el.innerHTML = html;
+}
+function setSrc(s){ activeSrc=s; buildSrc(); render(); }
 function setDone(i,v){ if(v) done[i]=1; else delete done[i]; save(); render(); }
 function toggleReveal(i){ const el=document.getElementById("rev"+i); if(el) el.classList.toggle("open"); }
 function toggleAll(open){ document.querySelectorAll(".reveal").forEach(e=>e.classList.toggle("open",open)); }
@@ -214,6 +245,7 @@ function render(){
   let html=""; let lastGroup=""; let shown=0;
   Q.forEach((item,i)=>{
     if(activeCat!=="all" && item.c!==activeCat) return;
+    if(activeSrc!=="all" && S[i]!==activeSrc) return;
     if(term && !(item.q.toLowerCase().includes(term)||item.t.toLowerCase().includes(term)||item.g.toLowerCase().includes(term))) return;
     shown++;
     if(item.c!==lastGroup){ html += `<div class="grouphdr">${GROUPS[item.c]}</div>`; lastGroup=item.c; }
@@ -224,6 +256,7 @@ function render(){
           <span class="num">${i+1}</span>
           <span class="q" onclick="toggleReveal(${i})">${item.q}</span>
           <span class="tag" style="background:${cat.color};color:#0f1216;">${cat.label.split(' ')[0]}</span>
+          <span class="tag" title="${SRC[S[i]].label}" style="background:transparent;color:${SRC[S[i]].color};border:1px solid ${SRC[S[i]].color};">${SRC[S[i]].short}</span>
         </div>
         <div class="reveal" id="rev${i}">
           <div class="test">Really testing: ${item.t}</div>
@@ -240,7 +273,7 @@ function render(){
   const total = Q.length, d = Object.keys(done).length;
   document.getElementById("progress").innerHTML = `Practiced <b>${d}</b> / ${total}`;
 }
-buildFilters(); render();
+buildFilters(); buildSrc(); render();
 </script>
 </body>
 </html>
